@@ -1,0 +1,8 @@
+﻿using System;
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.csproj.user

@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
         mc:Ignorable="d"
-        FontFamily="pack://application:,,,/HRM_System;component/Fonts/#Inter"
+        FontFamily="pack://application:,,,/HRM_System;component/Fonts/#Inter" 
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
@@ -43,8 +43,8 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Title text -->
-                <TextBlock Text="Login" VerticalAlignment="Center" Margin="10,0,0,0"
-               FontSize="16" Foreground="Black" FontWeight="SemiBold" />
+                <TextBlock Text="Pansilu Solutions" VerticalAlignment="Center" Margin="10,0,0,0"
+               FontSize="16" Foreground="#4D2D9C" FontWeight="SemiBold" />
 
                 <!-- Live Clock TextBlock -->
                 <TextBlock x:Name="ClockTextBlock" Grid.Column="1" VerticalAlignment="Center" 
@@ -54,7 +54,7 @@
                 <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,10,0">
                     <!-- Close -->
                     <Button Click="CloseButton_Click" Background="Transparent" BorderBrush="Transparent">
-                        <materialIcons:MaterialIcon Kind="WindowClose" Width="16" Height="16" Foreground="Black"/>
+                        <materialIcons:MaterialIcon Kind="WindowClose" Width="16" Height="16" Foreground="#4D2D9C" />
                     </Button>
                 </StackPanel>
             </Grid>
@@ -67,42 +67,42 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Left half content -->
-                <StackPanel Grid.Column="1" Background="Transparent">
-                    <TextBlock Text="Left Side" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="0" Orientation="Vertical">
+                    <Grid Height="460">
+                        
+                        <Image Source="/Images/login-bg.png" Stretch="Uniform" Width="300"/>
+                    </Grid>
                 </StackPanel>
 
                 <!-- Right half content -->
-                <StackPanel Grid.Column="0" Background="#F4F3FF">
-                    <Grid Background="#F4F3FF">
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
+                <StackPanel Grid.Column="1" Background="#F4F3FF" >
+                    <Grid  Height="460">
 
                         <!-- The card-like container -->
-                        <Border Grid.Row="1"
-                Width="400"
-                CornerRadius="20"
-                Background="Transparent"
+                <Border Grid.Row="1"
+                Width="360"
+                CornerRadius="10"
+                Background="#F4F3FF"
                 HorizontalAlignment="Center"
+                VerticalAlignment="Center"
                 Padding="30" Grid.RowSpan="2"
                 >
                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <!-- Icon at the top (replace with your actual image path) -->
-                                <Image Source="pack://application:,,,/YourIconPath.png"
-                       Width="64"
-                       Margin="0,0,0,20"
-                       Stretch="Uniform"/>
+                                
 
                                 <!-- Header -->
-                                <TextBlock Text="Get Started"
-                           FontSize="24"
+                                <TextBlock Text="Welcome Back"
+                           FontSize="20"
                            FontWeight="Bold"
                            Foreground="#4D2D9C"
                            HorizontalAlignment="Center"
-                           Margin="0,0,0,20"/>
+                           />
+                                <TextBlock Text="Please sign in to your account"
+                            FontSize="8"
+                            Foreground="#818b98"
+                            HorizontalAlignment="Center"
+                            Margin="0,0,0,20"/>
 
                                 <!-- Email field label -->
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,5">

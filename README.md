@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS users (
     -- Additional fields here
 );
 
+```
 ## Contributing 🤝
 
 Contributions are welcome! Follow these steps to contribute:

@@ -71,3 +71,22 @@ CREATE TABLE IF NOT EXISTS users (
     Password VARCHAR(255) NOT NULL
     -- Additional fields here
 );
+
+## Contributing 🤝
+
+Contributions are welcome! Follow these steps to contribute:
+
+1. **Fork the Repository**
+
+2. **Create a Feature Branch:**
+
+   ```bash
+   git checkout -b feature/your-feature-name
+Commit Your Changes
+
+Push to Your Branch:
+
+bash
+Copy
+git push origin feature/your-feature-name
+Submit a Pull Request

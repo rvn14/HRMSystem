@@ -87,7 +87,7 @@ Commit Your Changes
 
 Push to Your Branch:
 
-bash
-Copy
+   ```bash
 git push origin feature/your-feature-name
+```
 Submit a Pull Request

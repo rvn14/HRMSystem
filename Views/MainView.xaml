@@ -1,0 +1,61 @@
+﻿<Window x:Class="HRM_System.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HRM_System.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
+             mc:Ignorable="d" 
+             FontFamily="pack://application:,,,/HRM_System;component/Fonts/#Inter" 
+             WindowStyle="None"
+             AllowsTransparency="True"
+             Background="Transparent"
+             WindowStartupLocation="CenterScreen"
+             WindowState="Maximized"
+             Topmost="True"
+             Title="loginView" Height="800" Width="1300">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="White" MouseDown="Window_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0" VerticalAlignment="Center">
+                <materialIcons:MaterialIcon Kind="Database" Foreground="#4D2D9C" Width="20"/>
+                <TextBlock Text="Voltex Solutions" VerticalAlignment="Center" Margin="5,0,0,0"
+                           FontSize="16" Foreground="#4D2D9C" FontWeight="SemiBold" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,10,0">
+                <!-- Minimize Button -->
+                <Button Click="MinimizeButton_Click" Background="Transparent" BorderBrush="Transparent">
+                    <materialIcons:MaterialIcon Kind="WindowMinimize" Width="16" Height="16" Foreground="#4D2D9C"/>
+                </Button>
+                <!-- Maximize/Restore Button -->
+                <Button Click="MaximizeButton_Click" Background="Transparent" BorderBrush="Transparent">
+                    <materialIcons:MaterialIcon Kind="WindowMaximize" Width="16" Height="16" Foreground="#4D2D9C"/>
+                </Button>
+                <!-- Close Button -->
+                <Button Click="CloseButton_Click" Background="Transparent" BorderBrush="Transparent">
+                    <materialIcons:MaterialIcon Kind="WindowClose" Width="16" Height="16" Foreground="#4D2D9C"/>
+                </Button>
+            </StackPanel>
+            <!-- Title text -->
+
+
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock Text="Oya Lamaya Gihin Wadak Balaganna!" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        </Grid>
+
+    </Grid>
+</Window>

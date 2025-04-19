@@ -62,34 +62,110 @@
 
             <!-- Sidebar Navigation -->
             <Border Grid.Column="0" Background="#F5F5F7" CornerRadius="0,15,0,0">
-                <StackPanel Margin="0,20,0,0">
-                    <TextBlock Text="MAIN MENU" Margin="20,10,0,20" 
-                               FontWeight="SemiBold" Opacity="0.6" FontSize="14"/>
-                    
-                    <!-- Home Button -->
-                    <Button x:Name="HomeButton" Height="50" Margin="15,0,15,10" 
-                            Background="Transparent" BorderBrush="Transparent"
-                            Click="HomeButton_Click">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
-                            <materialIcons:MaterialIcon Kind="Home" Width="24" Height="24" Foreground="#4D2D9C"/>
-                            <TextBlock Text="Home" Margin="15,0,0,0" VerticalAlignment="Center" 
-                                       FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Background="#4D2D9C" CornerRadius="0,15,0,0">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="HRM System" FontSize="24" FontWeight="Bold" Foreground="White"/>
+                            <TextBlock Text="Welcome to the HRM System" FontSize="14" Foreground="White"/>
                         </StackPanel>
-                    </Button>
-                    
-                    <!-- Report Button -->
-                    <Button x:Name="ReportButton" Height="50" Margin="15,0,15,10" 
-                            Background="Transparent" BorderBrush="Transparent"
-                            Click="ReportButton_Click" >
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
-                            <materialIcons:MaterialIcon Kind="ChartBar" Width="24" Height="24" Foreground="#4D2D9C"/>
-                            <TextBlock Text="Reports" Margin="15,0,0,0" VerticalAlignment="Center" 
-                                       FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
+                    </Border>
+                    <Border Grid.Row="1">
+                        <StackPanel Margin="0,20,0,0">
+
+                            <!-- Home Button -->
+                            <Button x:Name="HomeButton" Height="50" Margin="15,0,15,10" 
+                                    Background="Transparent" BorderBrush="Transparent"
+                                    Click="HomeButton_Click">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
+                                    <materialIcons:MaterialIcon Kind="Home" Width="24" Height="24" Foreground="#4D2D9C"/>
+                                    <TextBlock Text="Home" Margin="15,0,0,0" VerticalAlignment="Center" 
+                       FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Report Button -->
+                            <Button x:Name="EmployeeButton" Height="50" Margin="15,0,15,10" 
+                                    Background="Transparent" BorderBrush="Transparent"
+                                    Click="EmployeeButton_Click" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
+                                    <materialIcons:MaterialIcon Kind="People" Width="24" Height="24" Foreground="#4D2D9C"/>
+                                    <TextBlock Text="Employees" Margin="15,0,0,0" VerticalAlignment="Center" 
+                       FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Report Button -->
+                            <Button x:Name="AttendanceButton" Height="50" Margin="15,0,15,10" 
+                                    Background="Transparent" BorderBrush="Transparent"
+                                    Click="AttendanceButton_Click" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
+                                    <materialIcons:MaterialIcon Kind="BarChart" Width="24" Height="24" Foreground="#4D2D9C"/>
+                                    <TextBlock Text="Attendance" Margin="15,0,0,0" VerticalAlignment="Center" 
+                       FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Report Button -->
+                            <Button x:Name="PayrollButton" Height="50" Margin="15,0,15,10" 
+                                    Background="Transparent" BorderBrush="Transparent"
+                                    Click="PayrollButton_Click" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
+                                    <materialIcons:MaterialIcon Kind="Cash100" Width="24" Height="24" Foreground="#4D2D9C"/>
+                                    <TextBlock Text="Payroll" Margin="15,0,0,0" VerticalAlignment="Center" 
+                       FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Report Button -->
+                            <Button x:Name="ReportButton" Height="50" Margin="15,0,15,10" 
+                                    Background="Transparent" BorderBrush="Transparent"
+                                    Click="ReportButton_Click" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
+                                    <materialIcons:MaterialIcon Kind="GraphPie" Width="24" Height="24" Foreground="#4D2D9C"/>
+                                    <TextBlock Text="Reports" Margin="15,0,0,0" VerticalAlignment="Center" 
+                       FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
+                                </StackPanel>
+                            </Button>
+
+
+                            <!-- You can add more navigation buttons here -->
                         </StackPanel>
-                    </Button>
-                    
-                    <!-- You can add more navigation buttons here -->
-                </StackPanel>
+                    </Border>
+
+                    <Border Grid.Row="2" Background="#4D2D9C" CornerRadius="0,0,0,0">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <StackPanel Height="50" Width="auto" HorizontalAlignment="Center">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" Height="40" Width="40" Background="Black" CornerRadius="40">
+                                        <Image Source="/Images/login-bg.png" Stretch="UniformToFill">
+                                            <Image.Clip>
+                                                <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                            </Image.Clip>
+                                        </Image>
+                                    </Border>
+                                    <Border Grid.Column="1" Height="40" Margin="10,0,0,0" VerticalAlignment="Center">
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                            <TextBlock Text="Dinith Devinda" FontWeight="Bold" FontSize="16" Foreground="White"/>
+                                            <TextBlock Text="Employee" FontSize="12" Foreground="White"/>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                            </StackPanel>
+                            <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center" Text="© 2025 Voltex Solutions" FontSize="12" Foreground="White"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                
             </Border>
             
             <!-- Main Content Area -->

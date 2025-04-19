@@ -39,7 +39,32 @@ namespace HRM_System.Views
             // Create and display HomeView
             ContentArea.Content = new HomeView();
         }
-        
+
+        private void EmployeeButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Update navigation button styles
+            UpdateNavButtonStyles(EmployeeButton);
+
+            // Create and display ReportView
+            ContentArea.Content = new EmployeeView();
+        }
+
+        private void AttendanceButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Update navigation button styles
+            UpdateNavButtonStyles(AttendanceButton);
+
+            // Create and display ReportView
+            ContentArea.Content = new AttendanceView();
+        }
+
+        private void PayrollButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Update navigation button styles
+            UpdateNavButtonStyles(PayrollButton);
+            // Create and display ReportView
+            ContentArea.Content = new PayrollView();
+        }
         private void ReportButton_Click(object sender, RoutedEventArgs e)
         {
             // Update navigation button styles
@@ -53,7 +78,7 @@ namespace HRM_System.Views
         private void UpdateNavButtonStyles(Button activeButton)
         {
             // Reset all buttons to default style
-            foreach (var button in new[] { HomeButton, ReportButton })
+            foreach (var button in new[] { HomeButton, ReportButton, EmployeeButton, AttendanceButton, PayrollButton })
             {
                 button.Background = Brushes.Transparent;
                 button.BorderBrush = Brushes.Transparent;

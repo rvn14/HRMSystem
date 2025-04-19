@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRM_System.ViewModels
 {
-    internal class MainViewModel: ViewModelBase
+    public partial class ReportViewModel : ViewModelBase
     {
-
     }
 }

@@ -25,6 +25,69 @@ namespace HRM_System.Views
         public MainView()
         {
             InitializeComponent();
+            
+            // Load HomeView by default when application starts
+            HomeButton_Click(null, null);
+        }
+
+        // Navigation Methods
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Update navigation button styles
+            UpdateNavButtonStyles(HomeButton);
+            
+            // Create and display HomeView
+            ContentArea.Content = new HomeView();
+        }
+        
+        private void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Update navigation button styles
+            UpdateNavButtonStyles(ReportButton);
+            
+            // Create and display ReportView
+            ContentArea.Content = new ReportView();
+        }
+        
+        // Helper method to update navigation button styles
+        private void UpdateNavButtonStyles(Button activeButton)
+        {
+            // Reset all buttons to default style
+            foreach (var button in new[] { HomeButton, ReportButton })
+            {
+                button.Background = Brushes.Transparent;
+                button.BorderBrush = Brushes.Transparent;
+                
+                // Find the StackPanel inside the button
+                if (button.Content is StackPanel sp)
+                {
+                    // Reset text and icon color
+                    foreach (var child in sp.Children)
+                    {
+                        if (child is TextBlock tb)
+                            tb.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1E1E"));
+                    }
+                }
+            }
+            
+            // Highlight active button
+            if (activeButton != null)
+            {
+                activeButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#EEEAF8"));
+                activeButton.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4D2D9C"));
+                activeButton.BorderThickness = new Thickness(0, 0, 0, 0);
+                
+                
+                // Update text and icon color in the active button
+                if (activeButton.Content is StackPanel sp)
+                {
+                    foreach (var child in sp.Children)
+                    {
+                        if (child is TextBlock tb)
+                            tb.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4D2D9C"));
+                    }
+                }
+            }
         }
 
         //Minimize Animation
@@ -73,6 +136,11 @@ namespace HRM_System.Views
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Border_DragOver(object sender, DragEventArgs e)
+        {
+
         }
     }
 }

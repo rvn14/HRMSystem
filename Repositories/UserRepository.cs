@@ -62,5 +62,6 @@ namespace HRM_System.Repositories
         {
             throw new NotImplementedException();
         }
+
     }
 }

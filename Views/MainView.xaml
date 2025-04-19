@@ -53,8 +53,49 @@
 
         </Grid>
         <Grid Grid.Row="1">
-            <TextBlock Text="Oya Lamaya Gihin Wadak Balaganna!" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <!-- Sidebar -->
+                <ColumnDefinition Width="*"/>
+                <!-- Main Content -->
+            </Grid.ColumnDefinitions>
 
+            <!-- Sidebar Navigation -->
+            <Border Grid.Column="0" Background="#F5F5F7" CornerRadius="0,15,0,0">
+                <StackPanel Margin="0,20,0,0">
+                    <TextBlock Text="MAIN MENU" Margin="20,10,0,20" 
+                               FontWeight="SemiBold" Opacity="0.6" FontSize="14"/>
+                    
+                    <!-- Home Button -->
+                    <Button x:Name="HomeButton" Height="50" Margin="15,0,15,10" 
+                            Background="Transparent" BorderBrush="Transparent"
+                            Click="HomeButton_Click">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
+                            <materialIcons:MaterialIcon Kind="Home" Width="24" Height="24" Foreground="#4D2D9C"/>
+                            <TextBlock Text="Home" Margin="15,0,0,0" VerticalAlignment="Center" 
+                                       FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <!-- Report Button -->
+                    <Button x:Name="ReportButton" Height="50" Margin="15,0,15,10" 
+                            Background="Transparent" BorderBrush="Transparent"
+                            Click="ReportButton_Click" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
+                            <materialIcons:MaterialIcon Kind="ChartBar" Width="24" Height="24" Foreground="#4D2D9C"/>
+                            <TextBlock Text="Reports" Margin="15,0,0,0" VerticalAlignment="Center" 
+                                       FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <!-- You can add more navigation buttons here -->
+                </StackPanel>
+            </Border>
+            
+            <!-- Main Content Area -->
+            <Border Grid.Column="1" Background="White" >
+                <ContentControl x:Name="ContentArea" Margin="10,0,0,0"/>
+            </Border>
         </Grid>
 
     </Grid>

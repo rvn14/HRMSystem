@@ -169,9 +169,12 @@
             </Border>
             
             <!-- Main Content Area -->
-            <Border Grid.Column="1" Background="White" >
-                <ContentControl x:Name="ContentArea" Margin="10,0,0,0"/>
+            <Border Grid.Column="1" Background="White">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10">
+                    <StackPanel x:Name="ContentArea" />
+                </ScrollViewer>
             </Border>
+
         </Grid>
 
     </Grid>

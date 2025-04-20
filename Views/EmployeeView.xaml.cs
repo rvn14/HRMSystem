@@ -13,16 +13,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace HRM_System.Views
 {
-    /// <summary>
-    /// Interaction logic for EmployeeView.xaml
-    /// </summary>
-    public partial class EmployeeView : UserControl
+    public partial class EmployeeDetailView : Window
     {
-        public EmployeeView()
+        public EmployeeDetailView()
         {
             InitializeComponent();
+        }
+
+        private void AddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Add button clicked");
+        }
+
+        private void RemoveEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Remove button clicked");
+        }
+
+        private void EditEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Edit button clicked");
         }
     }
 }

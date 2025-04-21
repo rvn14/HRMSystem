@@ -23,6 +23,13 @@ namespace HRM_System.Views
             InitializeComponent();
         }
 
+        //back button navigation to the admin panel
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainView home = new MainView();
+            home.Show();
+            this.Close();
+        }
         private void AddEmployee_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Add button clicked");

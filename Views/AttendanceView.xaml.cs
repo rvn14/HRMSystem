@@ -23,6 +23,13 @@ namespace HRM_System.Views
             InitializeComponent();
         }
 
+        //back button navigation to the admin panel
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainView home = new MainView(); 
+            home.Show();
+            this.Close();
+        }
         private void GenerateReport_Click(object sender, RoutedEventArgs e)
         {
             GeneratedPdfLink.Text = "Generated Report: dummy.pdf";

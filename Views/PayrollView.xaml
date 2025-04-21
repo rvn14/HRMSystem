@@ -3,20 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Payroll Generation" Height="600" Width="800" Background="#FFF2F2F2">
 
-    <Grid Margin="20">
-        <!-- Back Button -->
-        <Button Content="← Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="0,10,0,0"/>
+    <Grid Margin="25">
 
-        <!-- Search + Month Selection -->
-        <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
-            <TextBlock Text="SEARCH EMPLOYEE" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
-            <TextBox x:Name="PayrollSearchTextBox" Width="300" Height="30" Margin="0,0,10,0"/>
-            <ComboBox x:Name="PayrollMonthDropdown" Width="120" Height="30" DropDownOpened="PayrollMonthDropdown_DropDownOpened" />
+        <!-- Back Button -->
+        <Button Content="← Back"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="80"
+                Margin="0,10,0,0"
+                Click="BackButton_Click" />
+        
+         <!-- Employee Name Search - Positioned Just Above Placeholder -->
+        <StackPanel Orientation="Horizontal" Margin="0,60,0,0" HorizontalAlignment="Center">
+            <TextBlock Text="Employee Name:" VerticalAlignment="Top" FontWeight="Bold" Margin="0,0,10,0"/>
+            <TextBox x:Name="NameSearchTextBox" VerticalAlignment="Top" Width="250" Height="30" Margin="0,0,10,0"/>
+            <ComboBox x:Name="PayrollMonthDropdown" VerticalAlignment="Top" Width="120" Height="30" DropDownOpened="PayrollMonthDropdown_DropDownOpened" />
+            <Button Content="Search" Width="200" VerticalAlignment="Top" Height="30" Margin="60,0,0,0"  Click="NameSearchButton_Click"/>
         </StackPanel>
 
-        <!-- Payroll Data Placeholder -->
-        <Border Background="#EAEAEA" CornerRadius="10" Margin="0,100,0,140">
-            <!-- You can later insert a DataGrid or summary here -->
+        <!-- Payroll Data Placeholder - Directly Below Name Search -->
+        <Border Background="#EAEAEA" CornerRadius="10" Margin="0,145,0,145">
+            <!-- Future DataGrid goes here -->
         </Border>
 
         <!-- Generate Payroll & Output Link -->
@@ -25,12 +32,6 @@
         </StackPanel>
 
         <!-- Dummy PDF Display -->
-        <TextBlock x:Name="PayrollPdfLink" Text="" FontWeight="Bold" VerticalAlignment="Bottom" Margin="10,0,0,70"/>
-
-        <!-- Bottom Search -->
-        <DockPanel VerticalAlignment="Bottom" Margin="0,0,0,10">
-            <TextBlock Text="SEARCH BY KEY WORD" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,10,0" />
-            <TextBox Width="600" Height="30"/>
-        </DockPanel>
+        <TextBlock x:Name="PayrollPdfLink" Text="" FontWeight="Bold" VerticalAlignment="Bottom" Margin="10,0,211,70" Height="40"/>
     </Grid>
 </Window>

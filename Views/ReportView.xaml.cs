@@ -13,16 +13,43 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace HRM_System.Views
 {
-    /// <summary>
-    /// Interaction logic for ReportView.xaml
-    /// </summary>
-    public partial class ReportView : UserControl
+    public partial class AddEmployeeView : Window
     {
-        public ReportView()
+        public AddEmployeeView()
         {
             InitializeComponent();
+        }
+
+        //back button navigation to the admin panel
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainView home = new MainView();
+            home.Show();
+            this.Close();
+        }
+
+        private void SubmitEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            string id = EmployeeIdBox.Text;
+            string name = NameBox.Text;
+            string age = AgeBox.Text;
+            string email = EmailBox.Text;
+            string contact = ContactBox.Text;
+            string dept = DepartmentBox.Text;
+            string position = PositionBox.Text;
+            string recruitmentDate = RecruitmentDatePicker.SelectedDate?.ToShortDateString() ?? "Not selected";
+
+            MessageBox.Show(
+                $"Employee Added:\n\nID: {id}\nName: {name}\nAge: {age}\nEmail: {email}\nContact: {contact}\nDepartment: {dept}\nPosition: {position}\nRecruited: {recruitmentDate}",
+                "Success",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
+
+            
         }
     }
 }

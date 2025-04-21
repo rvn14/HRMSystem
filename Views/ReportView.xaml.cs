@@ -26,7 +26,7 @@ namespace HRM_System.Views
         //back button navigation to the admin panel
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            MainView home = new MainView();
+            EmployeeDetailView home = new EmployeeDetailView();
             home.Show();
             this.Close();
         }

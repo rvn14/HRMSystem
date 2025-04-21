@@ -54,14 +54,19 @@
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="44.118"/>
+                <ColumnDefinition Width="96.47"/>
+                <ColumnDefinition Width="109.412"/>
                 <!-- Sidebar -->
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="899*"/>
+                <ColumnDefinition Width="98*"/>
+                <ColumnDefinition Width="21*"/>
                 <!-- Main Content -->
             </Grid.ColumnDefinitions>
 
             <!-- Sidebar Navigation -->
-            <Border Grid.Column="0" Background="#F5F5F7" CornerRadius="0,15,0,0">
+            <Border Grid.Column="0" Background="#F5F5F7" CornerRadius="0,15,0,0" Grid.ColumnSpan="3">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="150"/>
@@ -165,11 +170,11 @@
                         </StackPanel>
                     </Border>
                 </Grid>
-                
+
             </Border>
-            
+
             <!-- Main Content Area -->
-            <Border Grid.Column="1" Background="White">
+            <Border Grid.Column="3" Background="White" Grid.ColumnSpan="4">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10">
                     <StackPanel x:Name="ContentArea" />
                 </ScrollViewer>

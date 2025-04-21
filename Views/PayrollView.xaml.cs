@@ -15,14 +15,32 @@ using System.Windows.Shapes;
 
 namespace HRM_System.Views
 {
-    /// <summary>
-    /// Interaction logic for PayrollView.xaml
-    /// </summary>
-    public partial class PayrollView : UserControl
+    public partial class PayrollView : Window
     {
         public PayrollView()
         {
             InitializeComponent();
+        }
+
+        private void GeneratePayroll_Click(object sender, RoutedEventArgs e)
+        {
+            PayrollPdfLink.Text = "Generated Payroll: payroll_dummy.pdf";
+        }
+
+        private void PayrollMonthDropdown_DropDownOpened(object sender, System.EventArgs e)
+        {
+            if (PayrollMonthDropdown.Items.Count == 0)
+            {
+                string[] months = {
+                    "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+                };
+
+                foreach (var month in months)
+                {
+                    PayrollMonthDropdown.Items.Add(month);
+                }
+            }
         }
     }
 }

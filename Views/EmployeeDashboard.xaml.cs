@@ -19,6 +19,10 @@ namespace HRM_System.Views
     /// </summary>
     public partial class EmployeeDashboard : Window
     {
+        public EmployeeDashboard()
+        {
+            InitializeComponent();
+        }
         private void AccountView_Click(object sender, RoutedEventArgs e)
         {
             var accountWindow = new AccountDetailsView();
@@ -33,9 +37,6 @@ namespace HRM_System.Views
             this.Close(); 
         }
 
-        public EmployeeDashboard()
-        {
-            InitializeComponent();
-        }
+       
     }
 }

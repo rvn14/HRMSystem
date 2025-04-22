@@ -20,13 +20,12 @@ namespace HRM_System.Views
     {
         public AttendanceView() => InitializeComponent();
 
-        public object MonthDropdown { get; private set; }
-        public object GeneratedPdfLink { get; private set; }
+
 
         //back button navigation to the admin panel
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            MainView home = new MainView(); 
+            EmployeeDashboard home = new EmployeeDashboard();
             home.Show();
             this.Close();
         }

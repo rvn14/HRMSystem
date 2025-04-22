@@ -84,7 +84,7 @@ namespace HRM_System.ViewModels
 
         private void ExecuteLoginCommand(object obj)
         {
-            string connectionString = "Server=localhost;Database=voltexdb;Uid=root;Pwd=DJdas12345;";
+            string connectionString = "Server=localhost;Database=hrmsystem;Uid=root;Pwd=12345;";
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();

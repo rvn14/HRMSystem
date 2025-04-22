@@ -19,6 +19,12 @@ namespace HRM_System.Views
     /// </summary>
     public partial class EmployeeAttendanceView : Window
     {
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeDashboard home = new EmployeeDashboard();
+            home.Show();
+            this.Close();
+        }
         public EmployeeAttendanceView() => InitializeComponent();
     }
 }

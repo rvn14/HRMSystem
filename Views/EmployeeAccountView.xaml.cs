@@ -7,6 +7,12 @@ namespace HRM_System.Views
         private string originalName;
         private string originalContact;
 
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeDashboard home = new EmployeeDashboard();
+            home.Show();
+            this.Close();
+        }
         public AccountDetailsView()
         {
             InitializeComponent();

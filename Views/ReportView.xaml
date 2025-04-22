@@ -26,42 +26,63 @@
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Employee ID:" Width="150" VerticalAlignment="Center"/>
-                    <TextBox x:Name="EmployeeIdBox" Width="300"/>
+                    <TextBox x:Name="EmployeeIdBox" Width="300" Background="#f6f8fa"
+                                BorderBrush="#eff2f5"
+                                Foreground="#4D2D9C"
+                                BorderThickness="1"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Name:" Width="150" VerticalAlignment="Center"/>
-                    <TextBox x:Name="NameBox" Width="300"/>
+                    <TextBox x:Name="NameBox" Width="300" Background="#f6f8fa"
+                                BorderBrush="#eff2f5"
+                                Foreground="#4D2D9C"
+                                BorderThickness="1"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Age:" Width="150" VerticalAlignment="Center"/>
-                    <TextBox x:Name="AgeBox" Width="300"/>
+                    <TextBox x:Name="AgeBox" Width="300" Background="#f6f8fa"
+                                BorderBrush="#eff2f5"
+                                Foreground="#4D2D9C"
+                                BorderThickness="1"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Email:" Width="150" VerticalAlignment="Center"/>
-                    <TextBox x:Name="EmailBox" Width="300"/>
+                    <TextBox x:Name="EmailBox" Width="300" Background="#f6f8fa"
+                                BorderBrush="#eff2f5"
+                                Foreground="#4D2D9C"
+                                BorderThickness="1"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Contact Number:" Width="150" VerticalAlignment="Center"/>
-                    <TextBox x:Name="ContactBox" Width="300"/>
+                    <TextBox x:Name="ContactBox" Width="300" Background="#f6f8fa"
+                                BorderBrush="#eff2f5"
+                                Foreground="#4D2D9C"
+                                BorderThickness="1"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Department:" Width="150" VerticalAlignment="Center"/>
-                    <TextBox x:Name="DepartmentBox" Width="300"/>
+                    <TextBox x:Name="DepartmentBox" Width="300" Background="#f6f8fa"
+                                BorderBrush="#eff2f5"
+                                Foreground="#4D2D9C"
+                                BorderThickness="1"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Job Position:" Width="150" VerticalAlignment="Center"/>
-                    <TextBox x:Name="PositionBox" Width="300"/>
+                    <TextBox x:Name="PositionBox" Width="300" Background="#f6f8fa"
+                                BorderBrush="#eff2f5"
+                                Foreground="#4D2D9C"
+                                BorderThickness="1"/> 
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Recruitment Date:" Width="150" VerticalAlignment="Center"/>
-                    <DatePicker x:Name="RecruitmentDatePicker" Width="300"/>
+                    <DatePicker x:Name="RecruitmentDatePicker" Width="300" />
                 </StackPanel>
 
                 <!-- Submit Button -->

@@ -16,12 +16,12 @@ using System.Windows.Shapes;
 
 namespace HRM_System.Views
 {
-    public partial class EmployeeAttendanceView : Window
+    public partial class AttendanceView : Window
     {
-        public EmployeeAttendanceView()
-        {
-            InitializeComponent();
-        }
+        public AttendanceView() => InitializeComponent();
+
+        public object MonthDropdown { get; private set; }
+        public object GeneratedPdfLink { get; private set; }
 
         //back button navigation to the admin panel
         private void BackButton_Click(object sender, RoutedEventArgs e)

@@ -1,0 +1,50 @@
+﻿<Window x:Class="HRM_System.Views.AccountDetailsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="My Account" Height="450" Width="600" Background="#FFF2F2F2">
+
+    <Grid Margin="20">
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Text="My Job Profile" FontSize="18" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Employee ID:" Width="150"/>
+                <TextBlock Text="EMP123"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Name:" Width="150"/>
+                <TextBox x:Name="NameBox" Width="300" Text="Dasun Perera"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Email:" Width="150"/>
+                <TextBlock Text="dasun@email.com"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Contact:" Width="150"/>
+                <TextBox x:Name="ContactBox" Width="300" Text="0712345678"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Department:" Width="150"/>
+                <TextBlock Text="IT Department"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Job Position:" Width="150"/>
+                <TextBlock Text="Software Engineer"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Recruitment Date:" Width="150"/>
+                <TextBlock Text="01 Jan 2022"/>
+            </StackPanel>
+            <Button Content="Reset" Width="150" Margin="0,20,0,0" HorizontalAlignment="Center"
+         Click="SaveChanges_Click"/>
+            <Button Content="Save Changes" Width="150" Margin="0,20,0,0" HorizontalAlignment="Center"
+         Click="SaveChanges_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

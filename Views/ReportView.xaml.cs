@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 
 namespace HRM_System.Views
 {
@@ -21,14 +10,32 @@ namespace HRM_System.Views
         public AddEmployeeView()
         {
             InitializeComponent();
+
+            EmailBox.LostFocus += EmailBox_LostFocus;
+            AgeBox.PreviewTextInput += NumericTextBox_PreviewTextInput;
+            ContactBox.PreviewTextInput += NumericTextBox_PreviewTextInput;
         }
 
-        //back button navigation to the admin panel
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            EmployeeDetailView home = new EmployeeDetailView();
-            home.Show();
+            EmployeeDetailView mainView = new EmployeeDetailView();
+            mainView.Show();
             this.Close();
+        }
+
+        private void EmailBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string email = EmailBox.Text;
+            if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageBox.Show("Please enter a valid email address.", "Invalid Email", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void NumericTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Block non-digit characters
+            e.Handled = !Regex.IsMatch(e.Text, @"^\d$");
         }
 
         private void SubmitEmployee_Click(object sender, RoutedEventArgs e)
@@ -40,7 +47,15 @@ namespace HRM_System.Views
             string contact = ContactBox.Text;
             string dept = DepartmentBox.Text;
             string position = PositionBox.Text;
-            string recruitmentDate = RecruitmentDatePicker.SelectedDate?.ToShortDateString() ?? "Not selected";
+            string recruitmentDate = RecruitmentDatePicker.SelectedDate?.ToShortDateString() ?? "";
+
+            // Basic validation
+            if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(name) ||
+                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(contact))
+            {
+                MessageBox.Show("Please fill out all required fields.", "Missing Info", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             MessageBox.Show(
                 $"Employee Added:\n\nID: {id}\nName: {name}\nAge: {age}\nEmail: {email}\nContact: {contact}\nDepartment: {dept}\nPosition: {position}\nRecruited: {recruitmentDate}",
@@ -49,7 +64,7 @@ namespace HRM_System.Views
                 MessageBoxImage.Information
             );
 
-            
+            // TODO: Save to DB
         }
     }
 }

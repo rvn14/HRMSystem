@@ -145,6 +145,15 @@
     <Compile Include="Views\AttendanceView.xaml.cs">
       <DependentUpon>AttendanceView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EmployeeAccountView.xaml.cs">
+      <DependentUpon>EmployeeAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeAttendanceView.xaml.cs">
+      <DependentUpon>EmployeeAttendanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeDashboard.xaml.cs">
+      <DependentUpon>EmployeeDashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmployeeView.xaml.cs">
       <DependentUpon>EmployeeView.xaml</DependentUpon>
     </Compile>
@@ -181,6 +190,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AttendanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeAttendanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

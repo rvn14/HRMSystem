@@ -147,7 +147,11 @@
     <Compile Include="CustomControls\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBManager.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeManager.cs" />
     <Compile Include="Models\IUserRepository.cs" />
+    <Compile Include="Models\UserAuth.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

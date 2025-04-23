@@ -1,3 +1,15 @@
+# Files To Check
+- Models/UserAuth (Do it in a better way)
+- Models/EmployeeManager
+- Models/Employee (Complete)
+- Models/Report
+- Models/DBManager (Maybe extend it?)
+
+# Things to do
+- Check this thing....
+- (https://www.figma.com/board/lVlJRO7lP3ayeTUc8twl8t/Untitled?node-id=0-1&t=3tvw3ZDTkzJbEZYW-1)
+
+
 # HRM_System 🚀
 
 A modern, WPF-based Human Resource Management System built with C#, MVVM, and MySQL. This project showcases a custom login system with slick animations and a Material Design-inspired UI.

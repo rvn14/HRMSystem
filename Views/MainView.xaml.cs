@@ -115,11 +115,6 @@ namespace HRM_System.Views
             }
         }
 
-        //Minimize Animation
-
-
-        //Maximize Animation
-
         public async Task AnimateWindowOpacity(double from, double to, int durationMs)
         {
             var tcs = new TaskCompletionSource<bool>();

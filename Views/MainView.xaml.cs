@@ -29,7 +29,7 @@ namespace HRM_System.Views
         private void EmployeeButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateNavButtonStyles(EmployeeButton);
-            ContentArea.Content = new EmployeeView();
+            ContentArea.Content = new EmployeeDetailView();
         }
 
         private void AttendanceButton_Click(object sender, RoutedEventArgs e)

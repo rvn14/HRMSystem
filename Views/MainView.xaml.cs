@@ -5,6 +5,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using HRM_System.ViewModels;
+using HRM_System.Views;
 
 namespace HRM_System.Views
 {
@@ -23,31 +25,45 @@ namespace HRM_System.Views
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateNavButtonStyles(HomeButton);
-            ContentArea.Content = new HomeView();
+            //ContentArea.Content = new HomeView();
+            var wnd = new HomeView();
+            ContentArea.Children.Add(wnd);
         }
 
         private void EmployeeButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateNavButtonStyles(EmployeeButton);
-            ContentArea.Content = new EmployeeDetailView();
+            //ContentArea.Content = new EmployeeDetailView();
+            var wnd = new EmployeeDetailView();
+            wnd.Owner = this;
+            wnd.Show();
         }
 
         private void AttendanceButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateNavButtonStyles(AttendanceButton);
-            ContentArea.Content = new AttendanceView();
+            //ContentArea.Content = new AttendanceView();
+            var wnd = new EmployeeAttendanceView();
+            wnd.Owner = this;
+            wnd.Show();
         }
 
         private void PayrollButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateNavButtonStyles(PayrollButton);
-            ContentArea.Content = new PayrollView();
+            // ContentArea.Content = new PayrollView();
+            var wnd = new PayrollView();
+            wnd.Owner = this; 
+            wnd.Show();
         }
 
         private void ReportButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateNavButtonStyles(ReportButton);
-            ContentArea.Content = new ReportView();
+            // ContentArea.Content = new HRM_System.Views. ReportView();
+            var wnd = new ReportView();
+            wnd.Owner = this;
+            wnd.Show();
         }
 
         // Helper method to update navigation button styles
@@ -158,7 +174,7 @@ namespace HRM_System.Views
                 stack.Children.Add(emailCard);
             }
 
-            ContentArea.Content = new ScrollViewer { Content = stack, VerticalScrollBarVisibility = ScrollBarVisibility.Auto };
+            ContentArea.Children.Add(new ScrollViewer { Content = stack, VerticalScrollBarVisibility = ScrollBarVisibility.Auto });
         }
     }
 }

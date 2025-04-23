@@ -5,9 +5,9 @@ using System.Windows.Input;
 
 namespace HRM_System.Views
 {
-    public partial class AddEmployeeView : Window
+    public partial class ReportView : Window
     {
-        public AddEmployeeView()
+        public ReportView()
         {
             InitializeComponent();
 

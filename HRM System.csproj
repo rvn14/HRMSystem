@@ -145,6 +145,9 @@
     <Compile Include="Views\AttendanceView.xaml.cs">
       <DependentUpon>AttendanceView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DashboardView.xaml.cs">
+      <DependentUpon>DashboardView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmployeeView.xaml.cs">
       <DependentUpon>EmployeeView.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AttendanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DashboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

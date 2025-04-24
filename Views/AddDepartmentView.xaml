@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="HRM_System.Views.AddDepartmentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="1000"
+             Background="White">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <!-- Sidebar -->
+            <ColumnDefinition Width="*"/>
+            <!-- Main Panel -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#FFEFEFEF">
+            <StackPanel Margin="10">
+                <Ellipse Width="60" Height="60" Fill="Gray" HorizontalAlignment="Left" Margin="0,10"/>
+                <TextBlock Text="WELCOME" FontSize="16" FontWeight="Bold" Margin="0,10,0,0"/>
+                <TextBlock Text="USER ID - 463JDIO" FontSize="12"/>
+                <Button Content="DEPARTMENTS" Margin="0,30,0,0" Height="40" Background="Black" Foreground="White"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Header -->
+                <RowDefinition Height="*"/>
+                <!-- Table -->
+                <RowDefinition Height="Auto"/>
+                <!-- Footer (toggle or info text) -->
+            </Grid.RowDefinitions>
+
+            <!-- Header Title -->
+            <TextBlock Grid.Row="0" Text="ADD DEPARTMENT"
+                       FontSize="18" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+            <!-- Department Table with Entry Row -->
+            <DataGrid Grid.Row="1"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True" 
+                      HeadersVisibility="Column"
+                      Margin="0,0,0,10"
+                      IsReadOnly="False">
+                <!-- Department Index -->
+                <DataGridTextColumn Header="Index" Binding="{Binding Index}" Width="100"/>
+                <!-- Department Name -->
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                <!-- No. of Employees -->
+                <DataGridTextColumn Header="#Employees" Binding="{Binding EmployeeCount}" Width="150"/>
+                <!-- Department Head -->
+                <DataGridTextColumn Header="Head" Binding="{Binding Head}" Width="200"/>
+            </DataGrid>
+
+            <!-- Footer: toggle/info -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
+                <!-- Optional: Add a checkbox or switch here -->
+                <!-- <CheckBox Content="Enable quick add mode" /> -->
+                <TextBlock Text="Now this includes a new row to enter department data in the above table structure"
+                           FontSize="12" FontStyle="Italic" Foreground="Gray"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

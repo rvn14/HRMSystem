@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="HRM_System.Views.EmployeeUserAccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="1000"
+             Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <!-- Sidebar -->
+            <ColumnDefinition Width="*"/>
+            <!-- Profile Panel -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#FFEFEFEF">
+            <StackPanel Margin="10">
+                <Ellipse Width="60" Height="60" Stroke="Blue" StrokeThickness="2" HorizontalAlignment="Left" Margin="0,10"/>
+                <TextBlock Text="WELCOME" FontSize="16" FontWeight="Bold" Margin="0,10,0,0"/>
+                <TextBlock Text="USER ID - 463JDIO" FontSize="12" Margin="0,0,0,10"/>
+
+                <Button Content="Employee Data" Height="40" Background="Black" Foreground="White"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Profile Content -->
+        <Border Grid.Column="1" Background="#FFF" Padding="20" Margin="10" CornerRadius="8" BorderBrush="LightGray" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Left Section: ID + Editable Info -->
+                <StackPanel Grid.Column="0" Margin="10">
+
+                    <!-- Profile Summary -->
+                    <Border Background="#F5F5F5" Padding="10" CornerRadius="8">
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Width="40" Height="40" Fill="LightGray"/>
+                            <StackPanel>
+                                <TextBlock Text="USER ID – 463JDIO" FontWeight="Bold"/>
+                                <TextBlock Text="NAME – WJFBHWF" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Form Fields -->
+                    <StackPanel >
+                        <TextBlock Text="FULL NAME"/>
+                        <TextBox Width="300"/>
+
+                        <TextBlock Text="EMAIL"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Width="250"/>
+                            <Button Content="✏️" Width="30"/>
+                        </StackPanel>
+
+                        <TextBlock Text="CONTACT NUMBER"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Width="250"/>
+                            <Button Content="✏️" Width="30"/>
+                        </StackPanel>
+
+                        <TextBlock Text="JOB POSITION"/>
+                        <TextBox Width="300"/>
+                        <TextBlock Text="EMAIL"/>
+                        <TextBox Width="200"/>
+
+                        <TextBlock Text="DATE OF BIRTH"/>
+                        <TextBox Width="200"/>
+
+                        <TextBlock Text="DATE OF RECRUITMENT"/>
+                        <TextBox Width="200"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

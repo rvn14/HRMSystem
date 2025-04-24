@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="HRM_System.Views.DepartmentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="1000"
+             Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <!-- Sidebar -->
+            <ColumnDefinition Width="*"/>
+            <!-- Main Panel -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#FFEFEFEF">
+            <StackPanel Margin="10">
+                <!-- Profile -->
+                <Ellipse Width="60" Height="60" Fill="Gray" HorizontalAlignment="Left" Margin="0,10"/>
+                <TextBlock Text="WELCOME" FontSize="16" FontWeight="Bold" Margin="0,10,0,0"/>
+                <TextBlock Text="USER ID - 463JDIO" FontSize="12"/>
+
+                <!-- Navigation -->
+                <Button Content="DEPARTMENTS" Margin="0,30,0,0" Height="40" Background="Black" Foreground="White"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <!-- Table Area -->
+                <RowDefinition Height="Auto"/>
+                <!-- Action Row -->
+            </Grid.RowDefinitions>
+
+            <!-- Department Table Area -->
+            <Border Grid.Row="0" Background="#FFF5F5F5" BorderBrush="#FFCCCCCC" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,0,10">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <!-- TODO: Replace this TextBlock with a DataGrid -->
+                    <StackPanel>
+                        <!-- Example headers - replace with DataGrid for real use -->
+                        <!-- DEPARTMENT INDEX, DEPARTMENT NAME, NUMBER OF EMPLOYEES, DEPARTMENT HEAD -->
+                        <!-- Each row should include Edit, Delete, and Employee Management buttons -->
+                        <TextBlock Text="Department table goes here" 
+                                   FontSize="16" FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,20"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <!-- Action Row: Search and Add Button -->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                <Label Content="SEARCH department" VerticalAlignment="Center"/>
+                <TextBox Width="200" Height="25"/>
+                <Button Content="ADD DEPARTMENT" Width="140" Height="30"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

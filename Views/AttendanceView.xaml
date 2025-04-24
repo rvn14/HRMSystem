@@ -1,12 +1,106 @@
 ﻿<UserControl x:Class="HRM_System.Views.AttendanceView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HRM_System.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="BlueViolet">
-            
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="500" d:DesignWidth="1000"
+             Background="White">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <!-- Sidebar -->
+            <ColumnDefinition Width="*"/>
+            <!-- Main Panel -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#FFEFEFEF">
+            <StackPanel Margin="10">
+                <!-- Profile -->
+                <Ellipse Width="60" Height="60" Fill="Gray" HorizontalAlignment="Left" Margin="0,10"/>
+                <TextBlock Text="WELCOME" FontSize="16" FontWeight="Bold" Margin="0,10,0,0"/>
+                <TextBlock Text="USER ID - 463JDIO" FontSize="12"/>
+
+                <!-- Sidebar Navigation -->
+                <Button Content="Attendance" Margin="0,30,0,0" Height="40" Background="Black" Foreground="White"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content Area -->
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Search Bar -->
+                <RowDefinition Height="*"/>
+                <!-- Content Blocks -->
+                <RowDefinition Height="Auto"/>
+                <!-- Action Buttons -->
+            </Grid.RowDefinitions>
+
+            <!-- Search Bar -->
+            <!-- Search Bar with Month Dropdown -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Left">
+                <Label Content="SEARCH EMPLOYEE" VerticalAlignment="Center"/>
+
+                <!-- Employee Name Input -->
+                <TextBox Width="200" Height="25"/>
+
+                <!-- Month Selection -->
+                <ComboBox Width="120" Height="25" Margin="10,0,0,0">
+                    <ComboBoxItem Content="January"/>
+                    <ComboBoxItem Content="February"/>
+                    <ComboBoxItem Content="March"/>
+                    <ComboBoxItem Content="April"/>
+                    <ComboBoxItem Content="May"/>
+                    <ComboBoxItem Content="June"/>
+                    <ComboBoxItem Content="July"/>
+                    <ComboBoxItem Content="August"/>
+                    <ComboBoxItem Content="September"/>
+                    <ComboBoxItem Content="October"/>
+                    <ComboBoxItem Content="November"/>
+                    <ComboBoxItem Content="December"/>
+                </ComboBox>
+
+                <!-- Search Button -->
+                <Button Content="Search" Width="100" Height="25"/>
+            </StackPanel>
+
+
+            <!-- Content Area -->
+            <Grid Grid.Row="1" Margin="0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Left Area (Calendar Display) -->
+                <Border Grid.Column="0" Background="#FFF5F5F5" BorderBrush="LightGray" BorderThickness="1" CornerRadius="8" Margin="10">
+                    <!-- This section will display a calendar with the employee's attendance after search -->
+                </Border>
+
+                <!-- Right Area (Employee Leave Info) -->
+                <Border Grid.Column="1" Background="#FFF5F5F5" BorderBrush="LightGray" BorderThickness="1" CornerRadius="8" Margin="10">
+                    <!-- This section will show the employee’s leave, bonuses, or details -->
+                </Border>
+            </Grid>
+
+            <!-- Action Buttons -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <!-- PDF Link Text -->
+                <TextBlock Text="Generated PDF Link"
+               Foreground="Blue"
+               FontStyle="Italic"
+               FontWeight="SemiBold"
+               TextDecorations="Underline"
+               Cursor="Hand"
+               VerticalAlignment="Center"
+               Margin="0,0,10,0"/>
+
+                <!-- Generate Report Button -->
+                <Button Content="GENERATE REPORT" Width="150" Height="35" Foreground="White" Background="MediumPurple"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

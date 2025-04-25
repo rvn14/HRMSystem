@@ -132,6 +132,17 @@
                        FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>
+                            <!-- Report Button -->
+                            <Button x:Name="DepartmentButton" Height="50" Margin="15,0,15,10" 
+             Background="Transparent" BorderBrush="Transparent"
+             Click="DepartmentButton_Click" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
+                                    <materialIcons:MaterialIcon Kind="Finance" Width="24" Height="24" Foreground="#4D2D9C"/>
+                                    <TextBlock Text="Departments" Margin="15,0,0,0" VerticalAlignment="Center" 
+                                                            FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
+                                </StackPanel>
+                            </Button>
+
 
 
                             <!-- You can add more navigation buttons here -->

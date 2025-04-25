@@ -6,7 +6,42 @@
              xmlns:local="clr-namespace:HRM_System.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Bisque">
+    <Grid>
+        <Grid.ColumnDefinitions>
             
+            <ColumnDefinition Width="*"/>
+            <!-- Main content -->
+        </Grid.ColumnDefinitions>
+
+       
+
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Table Section -->
+            <Border Grid.Row="0" Background="#F2F2F2" CornerRadius="5" Padding="20" BorderBrush="#CCC" BorderThickness="1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <TextBlock Text="Employee table goes here&#x0a;each employee row includes the remove and edit option at the end of the grid"
+                               FontSize="14" TextWrapping="Wrap"/>
+                </ScrollViewer>
+            </Border>
+
+            <!-- Add Button -->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,10">
+                <Button Content="ADD EMPLOYEE" Width="150" Height="35" Background="#4D2D9C" Foreground="White" Click="Click_Add_Employee"/>
+                <Button Content="BACK" Margin="80,0,0,0" Width="150" Height="35" Background="#4D2D9C" Foreground="White" Click="Click_Back_Button"/>
+            </StackPanel>
+
+            <!-- Search Bar -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom">
+                <TextBlock Text="SEARCH EMPLOYEE" FontWeight="Bold" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox Width="650" Height="30"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

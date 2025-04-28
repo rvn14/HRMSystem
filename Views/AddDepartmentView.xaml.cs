@@ -16,30 +16,21 @@ using System.Windows.Shapes;
 namespace HRM_System.Views
 {
     /// <summary>
-    /// Interaction logic for EmployeeView.xaml
+    /// Interaction logic for AddDepartmentView.xaml
     /// </summary>
-    public partial class EmployeeView : UserControl
+    public partial class AddDepartmentView : UserControl
     {
-        public EmployeeView()
+        public AddDepartmentView()
         {
             InitializeComponent();
         }
-        private void Click_Add_Employee(object sender, RoutedEventArgs e)
+        private void Click_Back_Button_To_Department(object sender, RoutedEventArgs e)
         {
             // Assume this is loaded inside a content control or frame
             var parentWindow = Window.GetWindow(this);
             if (parentWindow is MainView main)
             {
-                main.ContentArea.Content = new AddEmployeeView();
-            }
-        }
-        private void Click_Back_Button(object sender, RoutedEventArgs e)
-        {
-            // Assume this is loaded inside a content control or frame
-            var parentWindow = Window.GetWindow(this);
-            if (parentWindow is MainView main)
-            {
-                main.ContentArea.Content = new PayrollView();
+                main.ContentArea.Content = new DepartmentView();
             }
         }
     }

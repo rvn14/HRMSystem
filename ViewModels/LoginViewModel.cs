@@ -84,7 +84,7 @@ namespace HRM_System.ViewModels
 
         private void ExecuteLoginCommand(object obj)
         {
-            string connectionString = "Server=localhost;Database=voltexdb;Uid=root;Pwd=DJdas12345;";
+            string connectionString = "Server=localhost;Database=hrmsystem;Uid=root;Pwd=12345;";
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
@@ -95,7 +95,7 @@ namespace HRM_System.ViewModels
                     string plainPassword = ConvertToUnsecureString(Password);
 
                     // Use the correct table name; note backticks for reserved words in MySQL
-                    string query = "SELECT * FROM `users` WHERE Username = @Username AND Password = @Password";
+                    string query = "SELECT * FROM `admin` WHERE Username = @Username AND Password = @Password";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Username", Username);

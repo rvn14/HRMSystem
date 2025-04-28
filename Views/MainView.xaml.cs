@@ -73,7 +73,16 @@ namespace HRM_System.Views
             // Create and display ReportView
             ContentArea.Content = new ReportView();
         }
-        
+        private void DepartmentButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Update navigation button styles
+            UpdateNavButtonStyles(ReportButton);
+
+            // Create and display ReportView
+            ContentArea.Content = new DepartmentView();
+        }
+
+
         // Helper method to update navigation button styles
         private void UpdateNavButtonStyles(Button activeButton)
         {

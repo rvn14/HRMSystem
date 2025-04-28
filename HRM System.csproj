@@ -180,11 +180,17 @@
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelCommand.cs" />
+    <Compile Include="Views\AddDepartmentView.xaml.cs">
+      <DependentUpon>AddDepartmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddEmployeeView.xaml.cs">
+      <DependentUpon>AddEmployeeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AttendanceView.xaml.cs">
       <DependentUpon>AttendanceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DashboardView.xaml.cs">
-      <DependentUpon>DashboardView.xaml</DependentUpon>
+    <Compile Include="Views\DepartmentView.xaml.cs">
+      <DependentUpon>DepartmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EmployeeView.xaml.cs">
       <DependentUpon>EmployeeView.xaml</DependentUpon>
@@ -221,11 +227,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AddDepartmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AttendanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DashboardView.xaml">
+    <Page Include="Views\DepartmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

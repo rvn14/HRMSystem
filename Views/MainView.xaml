@@ -83,8 +83,8 @@
                                     Background="Transparent" BorderBrush="Transparent"
                                     Click="HomeButton_Click">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
-                                    <materialIcons:MaterialIcon Kind="Home" Width="24" Height="24" Foreground="#4D2D9C"/>
-                                    <TextBlock Text="Home" Margin="15,0,0,0" VerticalAlignment="Center" 
+                                    <materialIcons:MaterialIcon Kind="TabletDashboard" Width="24" Height="24" Foreground="#4D2D9C"/>
+                                    <TextBlock Text="Dashboard" Margin="15,0,0,0" VerticalAlignment="Center" 
                        FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
                                 </StackPanel>
                             </Button>

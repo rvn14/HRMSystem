@@ -37,7 +37,7 @@ namespace HRM_System.Views
             UpdateNavButtonStyles(HomeButton);
             
             // Create and display HomeView
-            ContentArea.Content = new HomeView();
+            ContentArea.Content = new DashboardView();
         }
 
         private void EmployeeButton_Click(object sender, RoutedEventArgs e)
@@ -123,11 +123,6 @@ namespace HRM_System.Views
                 }
             }
         }
-
-        //Minimize Animation
-
-
-        //Maximize Animation
 
         public async Task AnimateWindowOpacity(double from, double to, int durationMs)
         {

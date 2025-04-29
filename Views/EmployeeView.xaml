@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
              xmlns:local="clr-namespace:HRM_System.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -31,29 +32,129 @@
                               IsReadOnly="True"
                               CanUserAddRows="False"
                               HeadersVisibility="Column"
-                              RowBackground="White"
-                              AlternatingRowBackground="#F9F9F9"
                               BorderThickness="1"
-                              GridLinesVisibility="All">
+                              GridLinesVisibility="Horizontal"
+                              CanUserSortColumns="True"
+                              SelectionMode="Single"
+                              SelectionUnit="FullRow"
+                              VerticalGridLinesBrush="#E0E0E0"
+                              HorizontalGridLinesBrush="#E0E0E0"
+                              RowHeight="40">
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="Margin" Value="0,2,0,2"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#F0F0FF"/>
+                                        <Setter Property="Foreground" Value="#333333"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#E6E1F9"/>
+                                        <Setter Property="Foreground" Value="#333333"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="#4D2D9C"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Padding" Value="10,8"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="BorderThickness" Value="0,0,1,0"/>
+                                <Setter Property="BorderBrush" Value="#664FB7"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            </Style>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="Padding" Value="10,5"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                            <Border Padding="{TemplateBinding Padding}" 
+                                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding EmployeeId}" Width="Auto" />
-                            <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="Auto" />
-                            <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="Auto" />
-                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="Auto" />
-                            <DataGridTextColumn Header="Contact Number" Binding="{Binding ContactNumber}" Width="Auto" />
-                            <DataGridTextColumn Header="Job Role" Binding="{Binding JobRole}" Width="Auto" />
-                            <DataGridTextColumn Header="Date of Birth" Binding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" Width="Auto" />
-                            <DataGridTextColumn Header="Recruitment Date" Binding="{Binding RecruitementDate, StringFormat=dd/MM/yyyy}" Width="Auto" />
-                            <DataGridTemplateColumn Header="Actions" Width="Auto">
+                            <DataGridTextColumn Header="ID" Binding="{Binding EmployeeId}" Width="0.5*" />
+                            <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="1*" />
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="1*" />
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="1.5*" />
+                            <DataGridTextColumn Header="Contact Number" Binding="{Binding ContactNumber}" Width="1*" />
+                            <DataGridTextColumn Header="Job Role" Binding="{Binding JobRole}" Width="1*" />
+                            <DataGridTextColumn Header="Date of Birth" Binding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" Width="1*" />
+                            <DataGridTextColumn Header="Recruitment Date" Binding="{Binding RecruitementDate, StringFormat=dd/MM/yyyy}" Width="1*" />
+                            <DataGridTemplateColumn Header="Actions" Width="110">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Content="Edit" Width="50" Margin="0,0,5,0" 
+                                            <Button Width="30" Height="30" 
+                                                    Margin="0,0,5,0" 
                                                     Background="#4D2D9C" Foreground="White"
-                                                    Click="EditEmployee_Click" />
-                                            <Button Content="Delete" Width="50" 
+                                                    Click="EditEmployee_Click"
+                                                    Cursor="Hand"
+                                                    Padding="10"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center">
+                                                <materialIcons:MaterialIcon Kind="Edit" Foreground="White" Width="15"/>
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Background" Value="#4D2D9C"/>
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <Border Background="{TemplateBinding Background}" 
+                                                                            CornerRadius="4">
+                                                                        <ContentPresenter HorizontalAlignment="Center" 
+                                                                                          VerticalAlignment="Center"/>
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Background" Value="#6644C0"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
+                                            <Button Width="30" 
+                                                    Height="30"
                                                     Background="#FF5252" Foreground="White"
-                                                    Click="DeleteEmployee_Click" />
+                                                    Click="DeleteEmployee_Click"
+                                                    Cursor="Hand"
+                                                    Padding="10"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center">
+                                                <materialIcons:MaterialIcon Kind="Delete" Foreground="White" Width="15"/>
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Background" Value="#FF5252"/>
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <Border Background="{TemplateBinding Background}" 
+                                                                            CornerRadius="4">
+                                                                        <ContentPresenter HorizontalAlignment="Center" 
+                                                                                          VerticalAlignment="Center"/>
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Background" Value="#FF7373"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -64,16 +165,67 @@
             </Border>
 
             <!-- Add Button -->
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,10">
-                <Button Content="ADD EMPLOYEE" Width="150" Height="35" Background="#4D2D9C" Foreground="White" Click="Click_Add_Employee"/>
-                <Button Content="BACK" Margin="80,0,0,0" Width="150" Height="35" Background="#4D2D9C" Foreground="White" Click="Click_Back_Button"/>
-            </StackPanel>
-
+            <Button Grid.Row="1" Content="Add Employee" Width="150" Height="30" Margin="0,10,0,0" 
+                    Background="#4D2D9C" Foreground="White" HorizontalAlignment="Right"
+                    Click="Click_Add_Employee"/>
             <!-- Search Bar -->
-            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom">
-                <TextBlock Text="SEARCH EMPLOYEE" FontWeight="Bold" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="SearchTextBox" Width="650" Height="30" TextChanged="SearchTextBox_TextChanged"/>
-            </StackPanel>
+            <Grid Grid.Row="2" Margin="0,15,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Text="SEARCH BY:" FontWeight="Bold" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                
+                <ComboBox x:Name="SearchFieldComboBox" Grid.Column="1" Width="120" Height="30" Margin="0,0,10,0" SelectedIndex="0">
+                    <ComboBoxItem Content="All Fields"/>
+                    <ComboBoxItem Content="ID"/>
+                    <ComboBoxItem Content="First Name"/>
+                    <ComboBoxItem Content="Last Name"/>
+                    <ComboBoxItem Content="Email"/>
+                    <ComboBoxItem Content="Job Role"/>
+                </ComboBox>
+                
+                <Border Grid.Column="2" Height="30" CornerRadius="4" BorderThickness="1" BorderBrush="#CCC" Background="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <materialIcons:MaterialIcon Kind="Magnify" Width="20" Height="20" Margin="5,0,5,0" 
+                                                  Foreground="#666" VerticalAlignment="Center"/>
+                        <TextBox x:Name="SearchTextBox" Grid.Column="1" TextChanged="SearchTextBox_TextChanged"
+                                 BorderThickness="0" VerticalContentAlignment="Center"
+                                 Background="Transparent"
+                                 Padding="5,0"
+                                 Height="28">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type TextBox}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                                <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                        <Button x:Name="ClearSearchButton" Grid.Column="2" Width="20" Height="20" Margin="5,0"
+                                Click="ClearSearchButton_Click" Cursor="Hand" Background="Transparent" BorderThickness="0">
+                            <materialIcons:MaterialIcon Kind="Close" Width="15" Height="15" Foreground="#666"/>
+                        </Button>
+                    </Grid>
+                </Border>
+                
+                <Button x:Name="SearchButton" Grid.Column="3" Content="Search" Width="80" Height="30" Margin="10,0,0,0"
+                        Click="SearchButton_Click" Background="#4D2D9C" Foreground="White"/>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

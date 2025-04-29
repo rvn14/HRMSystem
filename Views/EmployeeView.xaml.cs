@@ -120,7 +120,24 @@ namespace HRM_System.Views
         
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string searchText = SearchTextBox.Text.ToLower();
+            FilterEmployees();
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            FilterEmployees();
+        }
+
+        private void ClearSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchTextBox.Clear();
+            SearchFieldComboBox.SelectedIndex = 0;
+            EmployeeDataGrid.ItemsSource = _employees;
+        }
+
+        private void FilterEmployees()
+        {
+            string searchText = SearchTextBox.Text.ToLower().Trim();
             
             if (string.IsNullOrWhiteSpace(searchText))
             {
@@ -128,13 +145,46 @@ namespace HRM_System.Views
                 return;
             }
             
-            var filteredList = _employees.Where(emp => 
-                emp.FirstName.ToLower().Contains(searchText) || 
-                emp.LastName.ToLower().Contains(searchText) || 
-                emp.Email.ToLower().Contains(searchText) ||
-                emp.EmployeeId.ToString().Contains(searchText)).ToList();
-                
-            EmployeeDataGrid.ItemsSource = filteredList;
+            IEnumerable<Employee> filteredList;
+            
+            // Get the currently selected search field
+            ComboBoxItem selectedItem = SearchFieldComboBox.SelectedItem as ComboBoxItem;
+            string searchField = selectedItem?.Content.ToString() ?? "All Fields";
+            
+            switch (searchField)
+            {
+                case "ID":
+                    filteredList = _employees.Where(emp => emp.EmployeeId.ToString().Contains(searchText));
+                    break;
+                    
+                case "First Name":
+                    filteredList = _employees.Where(emp => emp.FirstName.ToLower().Contains(searchText));
+                    break;
+                    
+                case "Last Name":
+                    filteredList = _employees.Where(emp => emp.LastName.ToLower().Contains(searchText));
+                    break;
+                    
+                case "Email":
+                    filteredList = _employees.Where(emp => emp.Email.ToLower().Contains(searchText));
+                    break;
+                    
+                case "Job Role":
+                    filteredList = _employees.Where(emp => emp.JobRole.ToLower().Contains(searchText));
+                    break;
+                    
+                default: // "All Fields"
+                    filteredList = _employees.Where(emp => 
+                        emp.FirstName.ToLower().Contains(searchText) || 
+                        emp.LastName.ToLower().Contains(searchText) || 
+                        emp.Email.ToLower().Contains(searchText) ||
+                        emp.ContactNumber.ToLower().Contains(searchText) ||
+                        emp.JobRole.ToLower().Contains(searchText) ||
+                        emp.EmployeeId.ToString().Contains(searchText));
+                    break;
+            }
+            
+            EmployeeDataGrid.ItemsSource = filteredList.ToList();
         }
 
         private void Click_Add_Employee(object sender, RoutedEventArgs e)

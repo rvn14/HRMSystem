@@ -98,7 +98,8 @@
                                                     Background="#4D2D9C" Foreground="White"
                                                     Click="EditEmployee_Click"
                                                     Cursor="Hand"
-                                                    Padding="10"
+                                                    ToolTip="Edit Employee"
+                                                    Padding="5"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center">
                                                 <materialIcons:MaterialIcon Kind="Edit" Foreground="White" Width="15"/>
@@ -109,7 +110,8 @@
                                                             <Setter.Value>
                                                                 <ControlTemplate TargetType="Button">
                                                                     <Border Background="{TemplateBinding Background}" 
-                                                                            CornerRadius="4">
+                                                                            CornerRadius="4"
+                                                                            BorderThickness="0">
                                                                         <ContentPresenter HorizontalAlignment="Center" 
                                                                                           VerticalAlignment="Center"/>
                                                                     </Border>
@@ -119,6 +121,9 @@
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
                                                                 <Setter Property="Background" Value="#6644C0"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsPressed" Value="True">
+                                                                <Setter Property="Background" Value="#3F249A"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>

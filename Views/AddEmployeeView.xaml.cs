@@ -23,7 +23,7 @@ namespace HRM_System.Views
     {
         private int? _employeeId = null;  // Changed from Guid? to int?
         private bool _isEditMode = false;
-        private string _connectionString = "Server=localhost;Database=voltexdb;Uid=root;Pwd=DJdas12345;";
+        private string _connectionString = "Server=localhost;Database=hrmsystem;Uid=root;Pwd=DJdas12345;";
 
         // Default constructor for adding a new employee
         public AddEmployeeView()
@@ -48,7 +48,7 @@ namespace HRM_System.Views
                 using (MySqlConnection connection = new MySqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT FirstName, LastName, Email, ContactNumber, DateOfBirth, Address, JobPosition, Department, RecruitmentDate FROM users WHERE EmployeeId = @EmployeeId";
+                    string query = "SELECT FirstName, LastName, Email, DateOfBirth, ContactNumber, RecruitementDate, JobRole FROM employees WHERE EmployeeId = @EmployeeId";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.Add("@EmployeeId", MySqlDbType.Int32).Value = _employeeId;
 
@@ -69,11 +69,14 @@ namespace HRM_System.Views
                             if (reader["DateOfBirth"] != DBNull.Value && DateTime.TryParse(reader["DateOfBirth"].ToString(), out DateTime dob))
                                 DobPicker.SelectedDate = dob;
                             
-                            AddressBox.Text = reader["Address"] != DBNull.Value ? reader["Address"].ToString() : string.Empty;
-                            PositionBox.Text = reader["JobPosition"] != DBNull.Value ? reader["JobPosition"].ToString() : string.Empty;
-                            DepartmentBox.Text = reader["Department"] != DBNull.Value ? reader["Department"].ToString() : string.Empty;
+                            // Job Role instead of JobPosition
+                            PositionBox.Text = reader["JobRole"] != DBNull.Value ? reader["JobRole"].ToString() : string.Empty;
                             
-                            if (reader["RecruitmentDate"] != DBNull.Value && DateTime.TryParse(reader["RecruitmentDate"].ToString(), out DateTime recruitDate))
+                            // These fields might not exist in the table - handle appropriately
+                            // AddressBox.Text = ""; // Omitted as it doesn't exist in the table
+                            // DepartmentBox.Text = ""; // Omitted as it doesn't exist in the table
+                            
+                            if (reader["RecruitementDate"] != DBNull.Value && DateTime.TryParse(reader["RecruitementDate"].ToString(), out DateTime recruitDate))
                                 RecruitmentDatePicker.SelectedDate = recruitDate;
                         }
                     }
@@ -141,11 +144,10 @@ namespace HRM_System.Views
                     if (_isEditMode)
                     {
                         // Update existing employee
-                        query = @"UPDATE users 
+                        query = @"UPDATE employees 
                                 SET FirstName = @FirstName, LastName = @LastName, Email = @Email, 
                                     ContactNumber = @ContactNumber, DateOfBirth = @DateOfBirth, 
-                                    Address = @Address, JobPosition = @JobPosition, 
-                                    Department = @Department, RecruitmentDate = @RecruitmentDate
+                                    JobRole = @JobRole, RecruitementDate = @RecruitementDate
                                 WHERE EmployeeId = @EmployeeId";
                         
                         command = new MySqlCommand(query, connection);
@@ -154,10 +156,10 @@ namespace HRM_System.Views
                     else
                     {
                         // Add new employee with auto-increment id
-                        query = @"INSERT INTO users 
-                                (FirstName, LastName, Email, ContactNumber, DateOfBirth, Address, JobPosition, Department, RecruitmentDate) 
+                        query = @"INSERT INTO employees 
+                                (FirstName, LastName, Email, ContactNumber, DateOfBirth, JobRole, RecruitementDate) 
                                 VALUES 
-                                (@FirstName, @LastName, @Email, @ContactNumber, @DateOfBirth, @Address, @JobPosition, @Department, @RecruitmentDate)";
+                                (@FirstName, @LastName, @Email, @ContactNumber, @DateOfBirth, @JobRole, @RecruitementDate)";
                         
                         command = new MySqlCommand(query, connection);
                     }
@@ -168,10 +170,8 @@ namespace HRM_System.Views
                     command.Parameters.AddWithValue("@Email", EmailBox.Text.Trim());
                     command.Parameters.AddWithValue("@ContactNumber", string.IsNullOrWhiteSpace(ContactBox.Text) ? DBNull.Value : (object)ContactBox.Text.Trim());
                     command.Parameters.AddWithValue("@DateOfBirth", DobPicker.SelectedDate ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue("@Address", string.IsNullOrWhiteSpace(AddressBox.Text) ? DBNull.Value : (object)AddressBox.Text.Trim());
-                    command.Parameters.AddWithValue("@JobPosition", string.IsNullOrWhiteSpace(PositionBox.Text) ? DBNull.Value : (object)PositionBox.Text.Trim());
-                    command.Parameters.AddWithValue("@Department", string.IsNullOrWhiteSpace(DepartmentBox.Text) ? DBNull.Value : (object)DepartmentBox.Text.Trim());
-                    command.Parameters.AddWithValue("@RecruitmentDate", RecruitmentDatePicker.SelectedDate ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@JobRole", string.IsNullOrWhiteSpace(PositionBox.Text) ? DBNull.Value : (object)PositionBox.Text.Trim());
+                    command.Parameters.AddWithValue("@RecruitementDate", RecruitmentDatePicker.SelectedDate ?? (object)DBNull.Value);
 
                     int rowsAffected = command.ExecuteNonQuery();
                     if (rowsAffected > 0)

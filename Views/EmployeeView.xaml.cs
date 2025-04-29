@@ -73,14 +73,39 @@ namespace HRM_System.Views
 
         private void EditEmployee_Click(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-            Employee selectedEmployee = (Employee)button.DataContext;
-            
-            // Navigate to edit page with selected employee
-            var parentWindow = Window.GetWindow(this);
-            if (parentWindow is MainView main)
+            try
             {
-                main.ContentArea.Content = new AddEmployeeView(selectedEmployee.EmployeeId);
+                Button button = (Button)sender;
+                Employee selectedEmployee = (Employee)button.DataContext;
+                
+                if (selectedEmployee != null)
+                {
+                    // Navigate to edit page with selected employee
+                    var parentWindow = Window.GetWindow(this);
+                    if (parentWindow is MainView main)
+                    {
+                        // Create a new instance of AddEmployeeView with the employee ID
+                        var addEmployeeView = new AddEmployeeView(selectedEmployee.EmployeeId);
+                        
+                        // Set the view in the content area
+                        main.ContentArea.Content = addEmployeeView;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot navigate to edit employee view.", "Navigation Error", 
+                            MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select an employee to edit.", "Selection Required", 
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error when trying to edit employee: {ex.Message}", 
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

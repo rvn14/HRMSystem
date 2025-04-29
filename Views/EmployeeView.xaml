@@ -26,8 +26,40 @@
             <!-- Table Section -->
             <Border Grid.Row="0" Background="#F2F2F2" CornerRadius="5" Padding="20" BorderBrush="#CCC" BorderThickness="1">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <TextBlock Text="Employee table goes here&#x0a;each employee row includes the remove and edit option at the end of the grid"
-                               FontSize="14" TextWrapping="Wrap"/>
+                    <DataGrid x:Name="EmployeeDataGrid" 
+                              AutoGenerateColumns="False" 
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              HeadersVisibility="Column"
+                              RowBackground="White"
+                              AlternatingRowBackground="#F9F9F9"
+                              BorderThickness="1"
+                              GridLinesVisibility="All">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding EmployeeId}" Width="Auto" />
+                            <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="Auto" />
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="Auto" />
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="Auto" />
+                            <DataGridTextColumn Header="Contact Number" Binding="{Binding ContactNumber}" Width="Auto" />
+                            <DataGridTextColumn Header="Job Role" Binding="{Binding JobRole}" Width="Auto" />
+                            <DataGridTextColumn Header="Date of Birth" Binding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" Width="Auto" />
+                            <DataGridTextColumn Header="Recruitment Date" Binding="{Binding RecruitementDate, StringFormat=dd/MM/yyyy}" Width="Auto" />
+                            <DataGridTemplateColumn Header="Actions" Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="Edit" Width="50" Margin="0,0,5,0" 
+                                                    Background="#4D2D9C" Foreground="White"
+                                                    Click="EditEmployee_Click" />
+                                            <Button Content="Delete" Width="50" 
+                                                    Background="#FF5252" Foreground="White"
+                                                    Click="DeleteEmployee_Click" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </ScrollViewer>
             </Border>
 
@@ -40,7 +72,7 @@
             <!-- Search Bar -->
             <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom">
                 <TextBlock Text="SEARCH EMPLOYEE" FontWeight="Bold" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                <TextBox Width="650" Height="30"/>
+                <TextBox x:Name="SearchTextBox" Width="650" Height="30" TextChanged="SearchTextBox_TextChanged"/>
             </StackPanel>
         </Grid>
     </Grid>

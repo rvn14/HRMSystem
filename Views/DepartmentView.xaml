@@ -26,10 +26,7 @@
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <!-- TODO: Replace this TextBlock with a DataGrid -->
                     <StackPanel>
-                        <Button Content="BACK" Width="200" Height="30" Click="Click_Back_Button" Background="#FFCCCCCC" Foreground="MediumPurple"/>
-                        <!-- Example headers - replace with DataGrid for real use -->
-                        <!-- DEPARTMENT INDEX, DEPARTMENT NAME, NUMBER OF EMPLOYEES, DEPARTMENT HEAD -->
-                        <!-- Each row should include Edit, Delete, and Employee Management buttons -->
+        
                         <TextBlock Text="Department table goes here" 
                                 FontSize="16" FontWeight="Bold"
                                 HorizontalAlignment="Center"

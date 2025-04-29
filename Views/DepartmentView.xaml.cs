@@ -33,14 +33,6 @@ namespace HRM_System.Views
                 main.ContentArea.Content = new AddDepartmentView();
             }
         }
-        private void Click_Back_Button(object sender, RoutedEventArgs e)
-        {
-            // Assume this is loaded inside a content control or frame
-            var parentWindow = Window.GetWindow(this);
-            if (parentWindow is MainView main)
-            {
-                main.ContentArea.Content = new PayrollView();
-            }
-        }
+        
     }
 }

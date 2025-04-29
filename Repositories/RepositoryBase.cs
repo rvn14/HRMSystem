@@ -12,7 +12,7 @@ namespace HRM_System.Repositories
         private readonly string _connectionString;
         public RepositoryBase()
         {
-            _connectionString = "Server=localhost; Database=voltexdb uid=root; pwd=DJdas12345";
+            _connectionString = "Server=localhost; Database=hrmsystem uid=root; pwd=DJdas12345";
         }
         protected MySqlConnection GetConnection()
         {

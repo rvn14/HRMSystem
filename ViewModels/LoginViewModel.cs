@@ -81,52 +81,61 @@ namespace HRM_System.ViewModels
             return !(string.IsNullOrWhiteSpace(Username) || Username.Length < 3 || Password == null || Password.Length < 3);
         }
 
-
         private void ExecuteLoginCommand(object obj)
         {
-            string connectionString = "Server=localhost;Database=voltexdb;Uid=root;Pwd=DJdas12345;";
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            string connectionString = "Server=localhost;Database=hrmsystem;Uid=root;Pwd=DJdas12345;";
+            try
             {
-                connection.Open();
-
-                if (connection.State == System.Data.ConnectionState.Open)
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    // Convert SecureString to plain text (for demo purposes)
-                    string plainPassword = ConvertToUnsecureString(Password);
+                    connection.Open();
 
-                    // Use the correct table name; note backticks for reserved words in MySQL
-                    string query = "SELECT * FROM `users` WHERE Username = @Username AND Password = @Password";
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    if (connection.State == System.Data.ConnectionState.Open)
                     {
-                        command.Parameters.AddWithValue("@Username", Username);
-                        command.Parameters.AddWithValue("@Password", plainPassword);
+                        // Convert SecureString to plain text (for demo purposes)
+                        string plainPassword = ConvertToUnsecureString(Password);
 
-                        bool validUser = command.ExecuteScalar() != null;
-                        if (validUser)
+                        // Modified query to return a single value instead of entire rows
+                        string query = "SELECT COUNT(*) FROM `users` WHERE Username = @Username AND Password = @Password";
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
                         {
-                            // Set the current principal
-                            Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
+                            command.Parameters.AddWithValue("@Username", Username);
+                            command.Parameters.AddWithValue("@Password", plainPassword);
 
-                            // Set the DialogResult to true to indicate successful login
-                            Application.Current.Dispatcher.Invoke(() =>
+                            // ExecuteScalar returns the first column of the first row
+                            int userCount = Convert.ToInt32(command.ExecuteScalar());
+                            bool validUser = userCount > 0;
+
+                            if (validUser)
                             {
-                                var loginWindow = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.DataContext == this);
-                                if (loginWindow != null)
+                                // Set the current principal
+                                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
+
+                                // Set the DialogResult to true to indicate successful login
+                                Application.Current.Dispatcher.Invoke(() =>
                                 {
-                                    loginWindow.DialogResult = true;
-                                }
-                            });
-                        }
-                        else
-                        {
-                            ErrorMessage = "Invalid username or password";
+                                    var loginWindow = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.DataContext == this);
+                                    if (loginWindow != null)
+                                    {
+                                        loginWindow.DialogResult = true;
+                                    }
+                                });
+                            }
+                            else
+                            {
+                                ErrorMessage = "Invalid username or password";
+                            }
                         }
                     }
+                    else
+                    {
+                        ErrorMessage = "Failed to connect to database";
+                    }
                 }
-                else
-                {
-                    ErrorMessage = "Failed to connect to database";
-                }
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = $"Login error: {ex.Message}";
             }
         }
 

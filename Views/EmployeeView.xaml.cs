@@ -24,7 +24,7 @@ namespace HRM_System.Views
     public partial class EmployeeView : UserControl
     {
         private ObservableCollection<Employee> _employees;
-        private string _connectionString = "Server=localhost;Database=voltexdb;Uid=root;Pwd=DJdas12345;";
+        private string _connectionString = "Server=localhost;Database=hrmsystem;Uid=root;Pwd=DJdas12345;";
         
         public EmployeeView()
         {
@@ -41,7 +41,7 @@ namespace HRM_System.Views
                 using (MySqlConnection connection = new MySqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT EmployeeId, FirstName, LastName, Email, DateOfBirth, ContactNumber, RecruitementDate, JobRole FROM users";
+                    string query = "SELECT EmployeeId, FirstName, LastName, Email, DateOfBirth, ContactNumber, RecruitementDate, JobRole FROM employees";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -99,7 +99,7 @@ namespace HRM_System.Views
                     using (MySqlConnection connection = new MySqlConnection(_connectionString))
                     {
                         connection.Open();
-                        string query = "DELETE FROM users WHERE EmployeeId = @EmployeeId";
+                        string query = "DELETE FROM employees WHERE EmployeeId = @EmployeeId";
                         MySqlCommand command = new MySqlCommand(query, connection);
                         command.Parameters.Add("@EmployeeId", MySqlDbType.Int32).Value = selectedEmployee.EmployeeId;
                         

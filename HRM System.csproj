@@ -170,7 +170,6 @@
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="ViewModels\AttendanceChart.cs" />
     <Compile Include="ViewModels\AttendanceViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />

@@ -37,7 +37,7 @@ namespace HRM_System.Views
             UpdateNavButtonStyles(HomeButton);
             
             // Create and display HomeView
-            ContentArea.Content = new DashboardView();
+            ContentArea.Content = new HomeView();
         }
 
         private void EmployeeButton_Click(object sender, RoutedEventArgs e)

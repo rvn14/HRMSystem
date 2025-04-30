@@ -23,7 +23,7 @@ namespace HRM_System.Views
     /// </summary>
     public partial class EmployeeView : UserControl
     {
-        private ObservableCollection<Employee> _employees;
+        private ObservableCollection<EmployeeObject> _employees;
         private string _connectionString = "Server=localhost;Database=hrmsystem;Uid=root;Pwd=DJdas12345;";
         
         public EmployeeView()
@@ -36,7 +36,7 @@ namespace HRM_System.Views
         {
             try
             {
-                _employees = new ObservableCollection<Employee>();
+                _employees = new ObservableCollection<EmployeeObject>();
                 
                 using (MySqlConnection connection = new MySqlConnection(_connectionString))
                 {
@@ -48,7 +48,7 @@ namespace HRM_System.Views
                     {
                         while (reader.Read())
                         {
-                            _employees.Add(new Employee
+                            _employees.Add(new EmployeeObject
                             {
                                 EmployeeId = Convert.ToInt32(reader["EmployeeId"]),
                                 FirstName = reader["FirstName"].ToString(),
@@ -77,7 +77,7 @@ namespace HRM_System.Views
             try
             {
                 Button button = (Button)sender;
-                Employee selectedEmployee = (Employee)button.DataContext;
+                EmployeeObject selectedEmployee = (EmployeeObject)button.DataContext;
                 
                 if (selectedEmployee != null)
                 {
@@ -113,7 +113,7 @@ namespace HRM_System.Views
         private void DeleteEmployee_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            Employee selectedEmployee = (Employee)button.DataContext;
+            EmployeeObject selectedEmployee = (EmployeeObject)button.DataContext;
             
             MessageBoxResult result = MessageBox.Show($"Are you sure you want to delete {selectedEmployee.FirstName} {selectedEmployee.LastName}?", 
                 "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -171,7 +171,7 @@ namespace HRM_System.Views
                 return;
             }
             
-            IEnumerable<Employee> filteredList;
+            IEnumerable<EmployeeObject> filteredList;
             
             // Get the currently selected search field
             ComboBoxItem selectedItem = SearchFieldComboBox.SelectedItem as ComboBoxItem;
@@ -234,7 +234,7 @@ namespace HRM_System.Views
         }
     }
 
-    public class Employee
+    public class EmployeeObject
     {
         public int EmployeeId { get; set; } // Changed from int to Guid
         public string FirstName { get; set; }

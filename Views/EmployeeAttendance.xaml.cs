@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HRM_System.Views
+namespace HRM_System.Views.Employee
 {
     /// <summary>
     /// Interaction logic for EmployeeAttendance.xaml

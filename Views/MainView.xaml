@@ -18,7 +18,8 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="77*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="White" MouseDown="Window_MouseDown">
             <Grid.ColumnDefinitions>
@@ -52,7 +53,7 @@
 
 
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
                 <!-- Sidebar -->
@@ -176,9 +177,9 @@
                         </StackPanel>
                     </Border>
                 </Grid>
-                
+
             </Border>
-            
+
             <!-- Main Content Area -->
             <Border Grid.Column="1" Background="White" >
                 <Grid>
@@ -190,7 +191,7 @@
                     <Border Grid.Row="0">
                         <ContentControl x:Name="ContentArea" Margin="10,0,0,0"/>
                     </Border>
-                    
+
                 </Grid>
             </Border>
         </Grid>

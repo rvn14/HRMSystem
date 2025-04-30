@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using HRM_System.View;
 using HRM_System.Views;
+using HRM_System.ViewModels;
 
 namespace HRM_System
 {
@@ -29,15 +30,27 @@ namespace HRM_System
             // Check if login was successful.
             if (result == true)
             {
-                // Create the main window.
-                var mainWindow = new MainView();
-                this.MainWindow = mainWindow;
+                // Get the admin status from the view model
+                bool isAdmin = ((LoginViewModel)loginView.DataContext).IsAdmin;
+
+                // Create the appropriate window based on the user's role
+                if (isAdmin)
+                {
+                    // Create the main window for administrators
+                    var mainWindow = new MainView();
+                    this.MainWindow = mainWindow;
+                    mainWindow.Show();
+                }
+                else
+                {
+                    // Create the user window for regular users
+                    var userWindow = new UserView();
+                    this.MainWindow = userWindow;
+                    userWindow.Show();
+                }
 
                 // Now that we have a main window, switch back to shutdown on main window close.
                 this.ShutdownMode = ShutdownMode.OnMainWindowClose;
-
-                // Show the main window.
-                mainWindow.Show();
             }
             else
             {
@@ -45,6 +58,5 @@ namespace HRM_System
                 this.Shutdown();
             }
         }
-
     }
 }

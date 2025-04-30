@@ -22,6 +22,7 @@ namespace HRM_System.ViewModels
         private SecureString _password;
         private string _errorMessage;
         private bool _isViewVisible = true;
+        private bool _isAdmin;
 
         private IUserRepository userRepository;
 
@@ -63,6 +64,16 @@ namespace HRM_System.ViewModels
             }
         }
 
+        public bool IsAdmin
+        {
+            get { return _isAdmin; }
+            set
+            {
+                _isAdmin = value;
+                OnPropertyChanged(nameof(IsAdmin));
+            }
+        }
+
         public ICommand LoginCommand { get; set; }
         public ICommand RecoverPasswordCommand { get; set; }
         public ICommand ShowPasswordCommand { get; set; }
@@ -95,19 +106,21 @@ namespace HRM_System.ViewModels
                         // Convert SecureString to plain text (for demo purposes)
                         string plainPassword = ConvertToUnsecureString(Password);
 
-                        // Modified query to return a single value instead of entire rows
-                        string query = "SELECT COUNT(*) FROM `users` WHERE Username = @Username AND Password = @Password";
+                        // Modified query to also retrieve IsAdmin value
+                        string query = "SELECT IsAdmin FROM `users` WHERE Username = @Username AND Password = @Password";
                         using (MySqlCommand command = new MySqlCommand(query, connection))
                         {
                             command.Parameters.AddWithValue("@Username", Username);
                             command.Parameters.AddWithValue("@Password", plainPassword);
 
                             // ExecuteScalar returns the first column of the first row
-                            int userCount = Convert.ToInt32(command.ExecuteScalar());
-                            bool validUser = userCount > 0;
-
-                            if (validUser)
+                            object result = command.ExecuteScalar();
+                            
+                            if (result != null && result != DBNull.Value)
                             {
+                                // Set the IsAdmin property based on database value
+                                IsAdmin = Convert.ToBoolean(result);
+                                
                                 // Set the current principal
                                 Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
 

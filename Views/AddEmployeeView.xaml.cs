@@ -48,7 +48,7 @@ namespace HRM_System.Views
                 using (MySqlConnection connection = new MySqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT FirstName, LastName, Email, DateOfBirth, ContactNumber, RecruitementDate, JobRole FROM employees WHERE EmployeeId = @EmployeeId";
+                    string query = "SELECT FirstName, LastName, Email, DateOfBirth, ContactNumber, RecruitementDate, JobRole, Department FROM employees WHERE EmployeeId = @EmployeeId";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.Add("@EmployeeId", MySqlDbType.Int32).Value = _employeeId;
 
@@ -72,9 +72,8 @@ namespace HRM_System.Views
                             // Job Role instead of JobPosition
                             PositionBox.Text = reader["JobRole"] != DBNull.Value ? reader["JobRole"].ToString() : string.Empty;
                             
-                            // These fields might not exist in the table - handle appropriately
-                            // AddressBox.Text = ""; // Omitted as it doesn't exist in the table
-                            // DepartmentBox.Text = ""; // Omitted as it doesn't exist in the table
+                            // Add Department field population
+                            DepartmentBox.Text = reader["Department"] != DBNull.Value ? reader["Department"].ToString() : string.Empty;
                             
                             if (reader["RecruitementDate"] != DBNull.Value && DateTime.TryParse(reader["RecruitementDate"].ToString(), out DateTime recruitDate))
                                 RecruitmentDatePicker.SelectedDate = recruitDate;
@@ -111,7 +110,6 @@ namespace HRM_System.Views
                 EmailBox.Text = string.Empty;
                 ContactBox.Text = string.Empty;
                 DobPicker.SelectedDate = null;
-                AddressBox.Text = string.Empty;
                 PositionBox.Text = string.Empty;
                 DepartmentBox.Text = string.Empty;
                 RecruitmentDatePicker.SelectedDate = null;
@@ -147,7 +145,8 @@ namespace HRM_System.Views
                         query = @"UPDATE employees 
                                 SET FirstName = @FirstName, LastName = @LastName, Email = @Email, 
                                     ContactNumber = @ContactNumber, DateOfBirth = @DateOfBirth, 
-                                    JobRole = @JobRole, RecruitementDate = @RecruitementDate
+                                    JobRole = @JobRole, RecruitementDate = @RecruitementDate,
+                                    Department = @Department
                                 WHERE EmployeeId = @EmployeeId";
                         
                         command = new MySqlCommand(query, connection);
@@ -157,9 +156,9 @@ namespace HRM_System.Views
                     {
                         // Add new employee with auto-increment id
                         query = @"INSERT INTO employees 
-                                (FirstName, LastName, Email, ContactNumber, DateOfBirth, JobRole, RecruitementDate) 
+                                (FirstName, LastName, Email, ContactNumber, DateOfBirth, JobRole, RecruitementDate, Department) 
                                 VALUES 
-                                (@FirstName, @LastName, @Email, @ContactNumber, @DateOfBirth, @JobRole, @RecruitementDate)";
+                                (@FirstName, @LastName, @Email, @ContactNumber, @DateOfBirth, @JobRole, @RecruitementDate, @Department)";
                         
                         command = new MySqlCommand(query, connection);
                     }
@@ -172,6 +171,7 @@ namespace HRM_System.Views
                     command.Parameters.AddWithValue("@DateOfBirth", DobPicker.SelectedDate ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@JobRole", string.IsNullOrWhiteSpace(PositionBox.Text) ? DBNull.Value : (object)PositionBox.Text.Trim());
                     command.Parameters.AddWithValue("@RecruitementDate", RecruitmentDatePicker.SelectedDate ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@Department", string.IsNullOrWhiteSpace(DepartmentBox.Text) ? DBNull.Value : (object)DepartmentBox.Text.Trim());
 
                     int rowsAffected = command.ExecuteNonQuery();
                     if (rowsAffected > 0)

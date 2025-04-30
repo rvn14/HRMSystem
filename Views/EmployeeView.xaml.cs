@@ -41,7 +41,7 @@ namespace HRM_System.Views
                 using (MySqlConnection connection = new MySqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT EmployeeId, FirstName, LastName, Email, DateOfBirth, ContactNumber, RecruitementDate, JobRole FROM employees";
+                    string query = "SELECT EmployeeId, FirstName, LastName, Email, DateOfBirth, ContactNumber, RecruitementDate, JobRole, Department FROM employees";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -57,7 +57,8 @@ namespace HRM_System.Views
                                 DateOfBirth = reader.IsDBNull(reader.GetOrdinal("DateOfBirth")) ? DateTime.MinValue : Convert.ToDateTime(reader["DateOfBirth"]),
                                 ContactNumber = reader["ContactNumber"].ToString(),
                                 RecruitementDate = reader.IsDBNull(reader.GetOrdinal("RecruitementDate")) ? DateTime.MinValue : Convert.ToDateTime(reader["RecruitementDate"]),
-                                JobRole = reader["JobRole"].ToString()
+                                JobRole = reader["JobRole"].ToString(),
+                                Department = reader["Department"].ToString()
                             });
                         }
                     }
@@ -243,5 +244,6 @@ namespace HRM_System.Views
         public DateTime RecruitementDate { get; set; }
         public string JobRole { get; set; }
         public string Email { get; set; }
+        public string Department { get; set; } 
     }
 }

@@ -8,7 +8,6 @@
              d:DesignHeight="500" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -24,65 +23,81 @@
             <Button Content="← Back" Width="80" Margin="0,0,0,10" Click="BackButton_Click" />
 
             <!-- Form Section -->
-            <Border Grid.Row="1" Background="WhiteSmoke" Padding="15" CornerRadius="10">
-                <StackPanel>
+            <Border Grid.Row="1" Background="WhiteSmoke" Padding="20" CornerRadius="10" BorderBrush="#DDDDDD" BorderThickness="1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                    <StackPanel>
-                        <TextBlock Text="FORM FOR EMPLOYEE DETAILS" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <!-- Header -->
+                        <TextBlock Grid.Row="0" Text="EMPLOYEE DETAILS" FontWeight="Bold" FontSize="18" Margin="0,0,0,20" 
+                                   HorizontalAlignment="Center" Foreground="#333333"/>
 
-                        <StackPanel>
-                            <TextBlock Text="Name"/>
-                            <TextBox x:Name="NameBox"/>
-                        </StackPanel>
+                        <!-- Form Fields - Single Column Layout -->
+                        <StackPanel Grid.Row="1" Width="Auto" MaxWidth="450">
+                            <!-- Name -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Name" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="NameBox" Padding="8" BorderThickness="1"/>
+                            </StackPanel>
 
-                        <StackPanel>
-                            <TextBlock Text="Employee ID"/>
-                            <TextBox x:Name="EmployeeIdBox"/>
-                        </StackPanel>
+                            <!-- Employee ID -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Employee ID" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="EmployeeIdBox" Padding="8" BorderThickness="1"/>
+                            </StackPanel>
 
-                        <StackPanel>
-                            <TextBlock Text="Email"/>
-                            <TextBox x:Name="EmailBox"/>
-                        </StackPanel>
+                            <!-- Email -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Email" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="EmailBox" Padding="8" BorderThickness="1"/>
+                            </StackPanel>
 
-                        <StackPanel>
-                            <TextBlock Text="Contact Number"/>
-                            <TextBox x:Name="ContactBox"/>
-                        </StackPanel>
+                            <!-- Contact Number -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Contact Number" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="ContactBox" Padding="8" BorderThickness="1"/>
+                            </StackPanel>
 
-                        <StackPanel>
-                            <TextBlock Text="Date of Birth"/>
-                            <DatePicker x:Name="DobPicker"/>
-                        </StackPanel>
+                            <!-- Date of Birth -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Date of Birth" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <DatePicker x:Name="DobPicker" Padding="5" BorderThickness="1" Width="Auto"/>
+                            </StackPanel>
 
-                        <StackPanel>
-                            <TextBlock Text="Address"/>
-                            <TextBox x:Name="AddressBox"/>
-                        </StackPanel>
+                            <!-- Job Position -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Job Position" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="PositionBox" Padding="8" BorderThickness="1"/>
+                            </StackPanel>
 
-                        <StackPanel>
-                            <TextBlock Text="Job Position"/>
-                            <TextBox x:Name="PositionBox"/>
-                        </StackPanel>
+                            <!-- Department -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Department" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="DepartmentBox" Padding="8" BorderThickness="1"/>
+                            </StackPanel>
 
-                        <StackPanel>
-                            <TextBlock Text="Department"/>
-                            <TextBox x:Name="DepartmentBox"/>
-                        </StackPanel>
-
-                        <StackPanel>
-                            <TextBlock Text="Recruitment Date"/>
-                            <DatePicker x:Name="RecruitmentDatePicker"/>
+                            <!-- Recruitment Date -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Recruitment Date" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <DatePicker x:Name="RecruitmentDatePicker" Padding="5" BorderThickness="1" Width="Auto"/>
+                            </StackPanel>
                         </StackPanel>
 
                         <!-- Buttons -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                            <Button Content="RESET" Width="100" Click="ResetButton_Click"/>
-                            <Button Content="SUBMIT" Width="100" Click="SubmitButton_Click"/>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <Button Content="RESET" Width="120" Height="35" Margin="0,0,15,0" 
+                                     Foreground="White" 
+                                    Click="ResetButton_Click"/>
+                            <Button Content="SUBMIT" Width="120" Height="35" 
+                                     Foreground="White" 
+                                    Click="SubmitButton_Click"/>
                         </StackPanel>
-                    </StackPanel>
-
-                </StackPanel>
+                    </Grid>
+                </ScrollViewer>
             </Border>
         </Grid>
     </Grid>

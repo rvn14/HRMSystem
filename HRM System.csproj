@@ -191,6 +191,18 @@
     <Compile Include="Views\DepartmentView.xaml.cs">
       <DependentUpon>DepartmentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EmployeeAccountDetails.xaml.cs">
+      <DependentUpon>EmployeeAccountDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeAttendance.xaml.cs">
+      <DependentUpon>EmployeeAttendance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeDashboard.xaml.cs">
+      <DependentUpon>EmployeeDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeLeaveReq.xaml.cs">
+      <DependentUpon>EmployeeLeaveReq.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmployeeView.xaml.cs">
       <DependentUpon>EmployeeView.xaml</DependentUpon>
     </Compile>
@@ -242,6 +254,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DepartmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeAccountDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeAttendance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeLeaveReq.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

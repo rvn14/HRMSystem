@@ -6,7 +6,65 @@
              xmlns:local="clr-namespace:HRM_System.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <Border CornerRadius="10" Background="White" Margin="20" Padding="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Title -->
+            <TextBlock Grid.Row="0" Text="REQUEST FOR A LEAVE"
+                       FontSize="16" FontWeight="Bold" 
+                       HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <!-- Form Fields -->
+            <Grid Grid.Row="1" Margin="0,0,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Employee ID -->
+                <TextBlock Text="EMPLOYEE ID" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                <TextBox x:Name="EmployeeIdBox" Grid.Row="0" Grid.Column="1" Margin="0,5"/>
+
+                <!-- Employee Name -->
+                <TextBlock Text="EMPLOYEE NAME" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                <TextBox x:Name="EmployeeNameBox" Grid.Row="1" Grid.Column="1" Margin="0,5"/>
+
+                <!-- Job Position -->
+                <TextBlock Text="JOB POSITION" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                <TextBox x:Name="JobPositionBox" Grid.Row="2" Grid.Column="1" Margin="0,5"/>
+
+                <!-- Cause -->
+                <TextBlock Text="CAUSE FOR THE LEAVE" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                <TextBox x:Name="CauseBox" Grid.Row="3" Grid.Column="1" Margin="0,5" Height="60" AcceptsReturn="True"/>
+
+                <!-- Type -->
+                <TextBlock Text="TYPE OF LEAVE" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                <ComboBox x:Name="LeaveTypeCombo" Grid.Row="4" Grid.Column="1" Margin="0,5">
+                    <ComboBoxItem Content="Sick"/>
+                    <ComboBoxItem Content="Casual"/>
+                    <ComboBoxItem Content="Annual"/>
+                    <ComboBoxItem Content="Maternity"/>
+                    <ComboBoxItem Content="Other"/>
+                </ComboBox>
+            </Grid>
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="RESET" Width="100" Click="ResetButton_Click"/>
+                <Button Content="SUBMIT" Width="100" Click="SubmitButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
 </UserControl>

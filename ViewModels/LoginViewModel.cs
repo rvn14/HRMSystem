@@ -120,8 +120,10 @@ namespace HRM_System.ViewModels
                             if (result != null && result != DBNull.Value)
                             {
                                 // Set the IsAdmin property based on database value
-                                IsAdmin = Convert.ToString(result) == "sysadmin";
-                                Globals.username = Username;
+                                string urole = Convert.ToString(result);
+                                IsAdmin = urole != "employee"; // Should check for privileges not lack of privileges
+                                Globals.username = Username; // Global state is used to share data. very bad
+
                                 // Set the current principal
                                 Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
 

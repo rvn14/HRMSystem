@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
-using MySql.Data.MySqlClient; // Changed from SqlClient
+using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HRM_System.Models;
 
 namespace HRM_System.Views
 {
@@ -173,7 +174,7 @@ namespace HRM_System.Views
             
             IEnumerable<Employee> filteredList;
             
-            // Get the currently selected search field
+            
             ComboBoxItem selectedItem = SearchFieldComboBox.SelectedItem as ComboBoxItem;
             string searchField = selectedItem?.Content.ToString() ?? "All Fields";
             
@@ -233,10 +234,12 @@ namespace HRM_System.Views
             }
         }
     }
+}
+
 
     public class Employee
     {
-        public int EmployeeId { get; set; } // Changed from int to Guid
+        public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -244,6 +247,6 @@ namespace HRM_System.Views
         public DateTime RecruitementDate { get; set; }
         public string JobRole { get; set; }
         public string Email { get; set; }
-        public string Department { get; set; } 
+        public string Department { get; set; }
     }
-}
+

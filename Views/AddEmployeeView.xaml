@@ -38,10 +38,17 @@
 
                         <!-- Form Fields - Single Column Layout -->
                         <StackPanel Grid.Row="1" Width="Auto" MaxWidth="450">
-                            <!-- Name -->
+
+                            <!-- Username -->
                             <StackPanel Margin="0,0,0,15">
-                                <TextBlock Text="Name" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                                <TextBox x:Name="NameBox" Padding="8" BorderThickness="1"/>
+                                <TextBlock Text="Username" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="Username" Padding="8" BorderThickness="1"/>
+                            </StackPanel>
+
+                            <!-- Password -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Password" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="Password" Padding="8" BorderThickness="1"/>
                             </StackPanel>
 
                             <!-- Employee ID -->
@@ -50,10 +57,22 @@
                                 <TextBox x:Name="EmployeeIdBox" Padding="8" BorderThickness="1"/>
                             </StackPanel>
 
-                            <!-- Email -->
+                            <!-- Department -->
                             <StackPanel Margin="0,0,0,15">
-                                <TextBlock Text="Email" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                                <TextBox x:Name="EmailBox" Padding="8" BorderThickness="1"/>
+                                <TextBlock Text="Department" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="DepartmentBox" Padding="8" BorderThickness="1"/>
+                            </StackPanel>
+                            
+                            <!-- Name -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Name" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="NameBox" Padding="8" BorderThickness="1"/>
+                            </StackPanel>
+
+                            <!-- NIC -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="NIC" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="NICBox" Padding="8" BorderThickness="1"/>
                             </StackPanel>
 
                             <!-- Contact Number -->
@@ -62,28 +81,40 @@
                                 <TextBox x:Name="ContactBox" Padding="8" BorderThickness="1"/>
                             </StackPanel>
 
-                            <!-- Date of Birth -->
+                            <!-- Email -->
                             <StackPanel Margin="0,0,0,15">
-                                <TextBlock Text="Date of Birth" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                                <DatePicker x:Name="DobPicker" Padding="5" BorderThickness="1" Width="Auto"/>
+                                <TextBlock Text="Email" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="EmailBox" Padding="8" BorderThickness="1"/>
                             </StackPanel>
 
                             <!-- Job Position -->
                             <StackPanel Margin="0,0,0,15">
-                                <TextBlock Text="Job Position" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBlock Text="Position" FontWeight="SemiBold" Margin="0,0,0,5"/>
                                 <TextBox x:Name="PositionBox" Padding="8" BorderThickness="1"/>
                             </StackPanel>
 
-                            <!-- Department -->
+                            <!-- Bank Acc -->
                             <StackPanel Margin="0,0,0,15">
-                                <TextBlock Text="Department" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                                <TextBox x:Name="DepartmentBox" Padding="8" BorderThickness="1"/>
+                                <TextBlock Text="Bank Account Number" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="BankAcc" Padding="8" BorderThickness="1"/>
+                            </StackPanel>
+
+                            <!-- Remaining Leaves -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Remaining Leaves" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="RemainingLeaves" Padding="5" BorderThickness="1" Width="Auto"/>
                             </StackPanel>
 
                             <!-- Recruitment Date -->
                             <StackPanel Margin="0,0,0,15">
                                 <TextBlock Text="Recruitment Date" FontWeight="SemiBold" Margin="0,0,0,5"/>
                                 <DatePicker x:Name="RecruitmentDatePicker" Padding="5" BorderThickness="1" Width="Auto"/>
+                            </StackPanel>
+
+                            <!-- Basic Salary -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="Basic Salary" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="BasicSalary" Padding="5" BorderThickness="1" Width="Auto"/>
                             </StackPanel>
                         </StackPanel>
 

@@ -13,6 +13,7 @@ using HRM_System.Repositories;
 using MySql.Data.MySqlClient;
 using System.Runtime.InteropServices;
 using System.Windows;
+using HRM_System.State;
 
 namespace HRM_System.ViewModels
 {
@@ -94,7 +95,7 @@ namespace HRM_System.ViewModels
 
         private void ExecuteLoginCommand(object obj)
         {
-            string connectionString = "Server=localhost;Database=hrmsystem;Uid=root;Pwd=DJdas12345;";
+            string connectionString = "Server=localhost;Database=voltexdb;Uid=root;";
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -107,7 +108,7 @@ namespace HRM_System.ViewModels
                         string plainPassword = ConvertToUnsecureString(Password);
 
                         // Modified query to also retrieve IsAdmin value
-                        string query = "SELECT IsAdmin FROM `users` WHERE Username = @Username AND Password = @Password";
+                        string query = "SELECT role FROM `users` WHERE Username = @Username AND PasswordHash = @Password";
                         using (MySqlCommand command = new MySqlCommand(query, connection))
                         {
                             command.Parameters.AddWithValue("@Username", Username);
@@ -119,8 +120,8 @@ namespace HRM_System.ViewModels
                             if (result != null && result != DBNull.Value)
                             {
                                 // Set the IsAdmin property based on database value
-                                IsAdmin = Convert.ToBoolean(result);
-                                
+                                IsAdmin = Convert.ToString(result) == "sysadmin";
+                                Globals.username = Username;
                                 // Set the current principal
                                 Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
 

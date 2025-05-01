@@ -25,7 +25,7 @@ namespace HRM_System.Views
     public partial class EmployeeView : UserControl
     {
         private ObservableCollection<Employee> _employees;
-        private string _connectionString = "Server=localhost;Database=hrmsystem;Uid=root;Pwd=DJdas12345;";
+        private string _connectionString = "Server=localhost;Database=voltexdb;Uid=root;";
         
         public EmployeeView()
         {
@@ -42,7 +42,7 @@ namespace HRM_System.Views
                 using (MySqlConnection connection = new MySqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT EmployeeId, FirstName, LastName, Email, DateOfBirth, ContactNumber, RecruitementDate, JobRole, Department FROM employees";
+                    string query = "SELECT * FROM employee";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -51,15 +51,18 @@ namespace HRM_System.Views
                         {
                             _employees.Add(new Employee
                             {
-                                EmployeeId = Convert.ToInt32(reader["EmployeeId"]),
-                                FirstName = reader["FirstName"].ToString(),
-                                LastName = reader["LastName"].ToString(),
+                                EmployeeID = Convert.ToString(reader["EmployeeID"]),
+                                Name = reader["Name"].ToString(),
                                 Email = reader["Email"].ToString(),
-                                DateOfBirth = reader.IsDBNull(reader.GetOrdinal("DateOfBirth")) ? DateTime.MinValue : Convert.ToDateTime(reader["DateOfBirth"]),
-                                ContactNumber = reader["ContactNumber"].ToString(),
-                                RecruitementDate = reader.IsDBNull(reader.GetOrdinal("RecruitementDate")) ? DateTime.MinValue : Convert.ToDateTime(reader["RecruitementDate"]),
-                                JobRole = reader["JobRole"].ToString(),
-                                Department = reader["Department"].ToString()
+                                Phone = reader["Phone"].ToString(),
+                                StartDate = reader.IsDBNull(reader.GetOrdinal("StartDate")) ? DateTime.MinValue : Convert.ToDateTime(reader["StartDate"]),
+                                Position = reader["Position"].ToString(),
+                                DepartmentName = reader["DepartmentName"].ToString(),
+                                BankAccNo = reader["BankAccNo"].ToString(),
+                                BasicSalary = Convert.ToSingle(reader["BasicSalary"]),
+                                NIC = reader["NIC"].ToString(),
+                                Username = reader["Username"].ToString(),
+                                RemainingLeaves = Convert.ToInt32(reader["RemainingLeaves"])
                             });
                         }
                     }
@@ -87,7 +90,7 @@ namespace HRM_System.Views
                     if (parentWindow is MainView main)
                     {
                         // Create a new instance of AddEmployeeView with the employee ID
-                        var addEmployeeView = new AddEmployeeView(selectedEmployee.EmployeeId);
+                        var addEmployeeView = new AddEmployeeView(selectedEmployee.EmployeeID);
                         
                         // Set the view in the content area
                         main.ContentArea.Content = addEmployeeView;
@@ -116,7 +119,7 @@ namespace HRM_System.Views
             Button button = (Button)sender;
             Employee selectedEmployee = (Employee)button.DataContext;
             
-            MessageBoxResult result = MessageBox.Show($"Are you sure you want to delete {selectedEmployee.FirstName} {selectedEmployee.LastName}?", 
+            MessageBoxResult result = MessageBox.Show($"Are you sure you want to delete {selectedEmployee.Name}?", 
                 "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 
             if (result == MessageBoxResult.Yes)
@@ -128,7 +131,7 @@ namespace HRM_System.Views
                         connection.Open();
                         string query = "DELETE FROM employees WHERE EmployeeId = @EmployeeId";
                         MySqlCommand command = new MySqlCommand(query, connection);
-                        command.Parameters.Add("@EmployeeId", MySqlDbType.Int32).Value = selectedEmployee.EmployeeId;
+                        command.Parameters.Add("@EmployeeId", MySqlDbType.Int32).Value = selectedEmployee.EmployeeID;
                         
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
@@ -181,15 +184,11 @@ namespace HRM_System.Views
             switch (searchField)
             {
                 case "ID":
-                    filteredList = _employees.Where(emp => emp.EmployeeId.ToString().Contains(searchText));
+                    filteredList = _employees.Where(emp => emp.EmployeeID.ToString().Contains(searchText));
                     break;
                     
                 case "First Name":
-                    filteredList = _employees.Where(emp => emp.FirstName.ToLower().Contains(searchText));
-                    break;
-                    
-                case "Last Name":
-                    filteredList = _employees.Where(emp => emp.LastName.ToLower().Contains(searchText));
+                    filteredList = _employees.Where(emp => emp.Name.ToLower().Contains(searchText));
                     break;
                     
                 case "Email":
@@ -197,17 +196,16 @@ namespace HRM_System.Views
                     break;
                     
                 case "Job Role":
-                    filteredList = _employees.Where(emp => emp.JobRole.ToLower().Contains(searchText));
+                    filteredList = _employees.Where(emp => emp.Position.ToLower().Contains(searchText));
                     break;
                     
                 default: // "All Fields"
                     filteredList = _employees.Where(emp => 
-                        emp.FirstName.ToLower().Contains(searchText) || 
-                        emp.LastName.ToLower().Contains(searchText) || 
+                        emp.Name.ToLower().Contains(searchText) || 
                         emp.Email.ToLower().Contains(searchText) ||
-                        emp.ContactNumber.ToLower().Contains(searchText) ||
-                        emp.JobRole.ToLower().Contains(searchText) ||
-                        emp.EmployeeId.ToString().Contains(searchText));
+                        emp.Phone.ToLower().Contains(searchText) ||
+                        emp.Position.ToLower().Contains(searchText) ||
+                        emp.EmployeeID.ToString().Contains(searchText));
                     break;
             }
             
@@ -239,14 +237,17 @@ namespace HRM_System.Views
 
     public class Employee
     {
-        public int EmployeeId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public string ContactNumber { get; set; }
-        public DateTime RecruitementDate { get; set; }
-        public string JobRole { get; set; }
+        public string EmployeeID { get; set; }
+        public string Username { get; set; }
+        public string DepartmentName { get; set; }
+        public string Name { get; set; }
+        public string NIC { get; set; }
+        public string Phone { get; set; }
         public string Email { get; set; }
-        public string Department { get; set; }
+        public string Position {  get; set; }
+        public string BankAccNo { get; set; }
+        public int RemainingLeaves {  get; set; }
+        public DateTime StartDate { get; set; }
+        public float BasicSalary { get; set; }
     }
 

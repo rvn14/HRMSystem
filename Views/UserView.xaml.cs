@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HRM_System.State;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,12 +24,38 @@ namespace HRM_System.Views
 
     public partial class UserView : Window
     {
+        private string _connectionString = "Server=localhost;Database=voltexdb;Uid=root;";
         public UserView()
         {
             InitializeComponent();
 
             // Load HomeView by default when application starts
             HomeButton_Click(null, null);
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT employee.Name, users.Role FROM `employee` INNER JOIN users ON users.Username = employee.Username WHERE employee.Username = @user";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@user", Globals.username);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            EmpName.Text = reader["Name"].ToString();
+                            EmpRole.Text = reader["Role"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"An error occured, {e.Message}",
+                "Ok", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Navigation Methods

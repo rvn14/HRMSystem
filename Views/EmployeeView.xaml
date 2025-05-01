@@ -81,15 +81,15 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding EmployeeId}" Width="0.5*" />
-                            <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="1*" />
-                            <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="1*" />
-                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="1.5*" />
-                            <DataGridTextColumn Header="Contact Number" Binding="{Binding ContactNumber}" Width="1*" />
-                            <DataGridTextColumn Header="Job Role" Binding="{Binding JobRole}" Width="1*" />
-                            <DataGridTextColumn Header="Department" Binding="{Binding Department}" Width="1*" />
-                            <DataGridTextColumn Header="Date of Birth" Binding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" Width="1*" />
-                            <DataGridTextColumn Header="Recruitment Date" Binding="{Binding RecruitementDate, StringFormat=dd/MM/yyyy}" Width="1*" />
+                            <DataGridTextColumn Header="ID" Binding="{Binding EmployeeID}" Width="0.5*" />
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1*" />
+                            <DataGridTextColumn Header="Department" Binding="{Binding DepartmentName}" Width="1.5*" />
+                            <DataGridTextColumn Header="Contact Number" Binding="{Binding Phone}" Width="1*" />
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="1*" />
+                            <DataGridTextColumn Header="Position" Binding="{Binding Position}" Width="1*" />
+                            <DataGridTextColumn Header="Remaining Leaves" Binding="{Binding RemainingLeaves}" Width="1*" />
+                            <DataGridTextColumn Header="Recruitment Date" Binding="{Binding StartDate, StringFormat=dd/MM/yyyy}" Width="1*" />
+                            <DataGridTextColumn Header="Basic Salary" Binding="{Binding BasicSalary}" Width="1*" />
                             <DataGridTemplateColumn Header="Actions" Width="110">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

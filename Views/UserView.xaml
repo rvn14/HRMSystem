@@ -89,16 +89,6 @@
                                 </StackPanel>
                             </Button>
 
-                            <!-- Report Button -->
-                            <Button x:Name="EmployeeButton" Height="50" Margin="15,0,15,10" 
-                                    Background="Transparent" BorderBrush="Transparent"
-                                    Click="EmployeeButton_Click" >
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="210">
-                                    <materialIcons:MaterialIcon Kind="People" Width="24" Height="24" Foreground="#4D2D9C"/>
-                                    <TextBlock Text="Employees" Margin="15,0,0,0" VerticalAlignment="Center" 
-                       FontSize="15" Foreground="#1E1E1E" FontWeight="SemiBold"/>
-                                </StackPanel>
-                            </Button>
 
                             <!-- Report Button -->
                             <Button x:Name="AttendanceButton" Height="50" Margin="15,0,15,10" 

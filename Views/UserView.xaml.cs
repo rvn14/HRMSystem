@@ -40,22 +40,13 @@ namespace HRM_System.Views
             ContentArea.Content = new HomeView();
         }
 
-        private void EmployeeButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Update navigation button styles
-            UpdateNavButtonStyles(EmployeeButton);
-
-            // Create and display ReportView
-            ContentArea.Content = new EmployeeView();
-        }
-
         private void AttendanceButton_Click(object sender, RoutedEventArgs e)
         {
             // Update navigation button styles
             UpdateNavButtonStyles(AttendanceButton);
 
             // Create and display ReportView
-            ContentArea.Content = new AttendanceView();
+            ContentArea.Content = new UserAttendanceView();
         }
 
         private void PayrollButton_Click(object sender, RoutedEventArgs e)
@@ -87,7 +78,7 @@ namespace HRM_System.Views
         private void UpdateNavButtonStyles(Button activeButton)
         {
             // Reset all buttons to default style
-            foreach (var button in new[] { HomeButton, ReportButton, EmployeeButton, AttendanceButton, PayrollButton, DepartmentButton })
+            foreach (var button in new[] { HomeButton, ReportButton, AttendanceButton, PayrollButton, DepartmentButton })
             {
                 button.Background = Brushes.Transparent;
                 button.BorderBrush = Brushes.Transparent;
